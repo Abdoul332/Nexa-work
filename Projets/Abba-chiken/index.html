@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les délicieux kebabs halal d'ABBA CHIKEN. Commandez en ligne ou réservez votre table.">
+    <title>ABBA CHIKEN - Restaurant de Kebab Halal</title>
+    
+    <!-- Font Awesome 6.0.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Chargement du CSS avec priorité -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
+    
+    <!-- Préchargement des images critiques -->
+    <link rel="preload" as="image" href="img/Kebab.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍗</text></svg>">
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <p><span>ABBA </span>CHIKEN</p>
+        </div>
+        <ul class="menu">
+            
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about-us">À propos</a></li>
+            <li><a href="#reservation">Réservation</a></li>
+        </ul>
+        <!-- Menu responsive -->
+        <div class="toggle_menu">
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <!--section acceuil-->
+    <section id="home">
+        <div class="left">
+         <h1>Notre nouveau-Menu</h1>
+         <H2>KEBAB HALAL</H2>
+         <P>Chez ABBA CHIKEN, nos kébabs halal sont préparés avec passion, à base de viande 100% halal, savoureuse et bien assaisonnée. Chaque portion est généreusement garnie de légumes frais, accompagnée de sauces maison et servie dans un pain croustillant et moelleux à la fois.</P>
+
+         <button><a href="https://wa.me/22787171269?text=Bonjour%20je%20souhaite%20commander%20chez%20vous" target="_blank">Passez à la commande</a></button>
+        </div>
+        <div class="right">
+            <div class="menu-highlight">
+                <div class="menu-image-container">
+                    <picture>
+                        <source srcset="img/Kebab.webp" type="image/webp">
+                        <source srcset="img/Kebab.jpg" type="image/jpeg">
+                        <img 
+                            src="img/Kebab.jpg" 
+                            alt="Nouveau menu Kebab Halal d'ABBA CHIKEN" 
+                            width="600"
+                            height="400"
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                            class="menu-featured-image">
+                    </picture>
+                    
+                </div>
+                <div class="menu-image-decoration"></div>
+            </div>
+        </div>
+    </section>
+    <!--section menu-->
+    <section id="menu">
+        <h2 class="mini-title">Notre Carte</h2>
+        <h3 class="title">Découvrez nos délices</h3>
+        <div class="dishes">
+            <!-- Kebab Classique -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/Kebab.webp" type="image/webp">
+                        <img src="img/Kebab.webp" alt="Kebab Classique" loading="lazy" width="400" height="300">
+                    </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Kebab Classique</h4>
+                    <p>Pain frais, viande marinée, légumes frais et sauce maison</p>
+                    <span class="price">2 800 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+
+            <!-- Poulet Frit -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/Poulet-frit.webp" type="image/webp">
+                        <img src="img/Poulet-frit.webp" alt="Poulet Frit" title="Poulet Frit croustillant" loading="lazy" width="400" height="300">
+                    </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Poulet Frit</h4>
+                    <p>Morceaux de poulet croustillants, frites et sauce au choix</p>
+                    <span class="price">3 500 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+
+            <!-- Burger Gourmet -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/Hamburger.webp" type="image/webp">
+                        <img src="img/Hamburger.webp" alt="Burger Gourmet" loading="lazy" width="400" height="300">
+                    </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Burger Gourmet</h4>
+                    <p>Pain brioché, steak haché 100% boeuf, cheddar, salade et oignons caramélisés</p>
+                    <span class="price">3 200 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+
+            <!-- Pizza -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/Pyzza.webp" type="image/webp">
+                        <img src="img/Pyzza.webp" alt="Pizza" loading="lazy" width="400" height="300">
+            </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Pizza</h4>
+                    <p>Base de sauce tomate maison, fromage fondant et garniture au choix</p>
+                    <span class="price">4 500 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+
+            <!-- Sandwich Kebab -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/Sandwich-Kebab.webp" type="image/webp">
+                        <img src="img/Sandwich-Kebab.webp" alt="Sandwich Kebab" title="Délicieux Sandwich Kebab" loading="lazy" width="400" height="300">
+                    </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Sandwich Kebab</h4>
+                    <p>Pain pita, viande rôtie, légumes frais et sauce blanche</p>
+                    <span class="price">2 500 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+
+            <!-- Pâtes Tagliatelles -->
+            <div class="dish">
+                <div class="dish-img-container">
+                    <picture>
+                        <source srcset="img/patte.webp" type="image/webp">
+                        <img src="img/patte.webp" alt="Salade" loading="lazy" width="400" height="300">
+            </picture>
+                </div>
+                <div class="dish-content">
+                    <h4>Tagliatelles au Bacon</h4>
+                    <p>Pâtes fraîches, lardons fumés, crème fraîche et parmesan</p>
+                    <span class="price">5 500 FCFA</span>
+                    <a href="#" class="btn-commander">Commander</a>
+                </div>
+            </div>
+            
+            </div>
+           
+
+            
+        </div>
+    </section>
+    <!-- Section À Propos -->
+    <section id="about-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="mini-title">Notre Savoir-Faire</span>
+                <h2 class="title">L'Excellence Culinaire à Votre Portée</h2>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <picture>
+                <source srcset="img/Kebab.webp" type="image/webp">
+                <img src="img/Culinaire.jpg" alt="Kebab" loading="lazy" width="400" height="300">
+            </picture>
+                        <div class="experience-badge">
+                            <span>+10 ans</span>
+                            <small>d'expérience</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-content">
+                    <h3>Une Cuisine Authentique et Engagée</h3>
+                    <p class="lead">Découvrez l'authenticité des saveurs méditerranéennes préparées avec des ingrédients frais et sélectionnés avec soin.</p>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h4>100% Halal Certifié</h4>
+                                <p>Viandes sélectionnées selon les normes halal les plus strictes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h4>Frais & Naturel</h4>
+                                <p>Produits frais du marché et préparations maison quotidiennes</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>Fait avec Passion</h4>
+                                <p>Recettes traditionnelles et savoir-faire artisanal</p>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <div class="cta-buttons">
+                        <a href="#menu" class="btn btn-primary">Découvrir la carte</a>
+                        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+                    </div>
+                    
+                    <!-- Popup Développeur -->
+                    <div id="dev-popup" class="dev-popup">
+                        <div class="dev-popup-content">
+                            <span class="close-popup">&times;</span>
+                            <p>Projet développé par <strong>Ibrahim</strong></p>
+                            <p>Développeur Web & Consultant SEO</p>
+                            <div class="dev-links">
+                                <a href="https://www.linkedin.com/in/abdoul332/" target="_blank" class="dev-link">
+                                    <i class="fab fa-linkedin"></i> LinkedIn
+                                </a>
+                                <a href="https://abdoul332.github.io/a-works/" target="_blank" class="dev-link">
+                                    <i class="fas fa-globe"></i> Portfolio
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <!-- Témoignages Clients -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="mini-title">Ils nous font confiance</h2>
+                <h3 class="title">Ce que nos clients disent</h3>
+                <div class="title-underline"></div>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Témoignage 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">"Je suis très exigeant sur les repas halal, et chez ABBA CHIKEN je suis rassuré. Frais, savoureux et toujours impeccable. Une adresse que je recommande vivement !"</p>
+                    </div>
+                    <div class="client-info">
+                        <picture>
+                        <source srcset="img/Ali.webp" type="image/webp">
+                        <img src="img/Ali.webp" alt="Ali B. - Client fidèle" class="client-avatar" loading="lazy" width="100" height="100">
+            </picture>
+                        <div>
+                            <h4>Ali B.</h4>
+                            <span>Client fidèle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Rapide, délicieux et excellent rapport qualité-prix. Mon adresse préférée pour une pause déjeuner réussie. Le kebab épicé est tout simplement exceptionnel !"</p>
+                    </div>
+                    <div class="client-info">
+                        <picture>
+                <source srcset="img/Ismael.webp" type="image/webp">
+                <img src="img/Ismael.webp" alt="Ismaël" loading="lazy" width="100" height="100" class="client-avatar">
+            </picture>
+                        <div>
+                            <h4>Ismaël D.</h4>
+                            <span>Client régulier</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Témoignage 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Le meilleur kebab de Niamey ! Des saveurs authentiques, des ingrédients frais et un service irréprochable. Une adresse que je recommande à tous les amateurs de bonne cuisine."</p>
+                    </div>
+                    <div class="client-info">
+                        <picture>
+                            <source srcset="img/Mariam.webp" type="image/webp">
+                            <img src="img/Mariam.webp" alt="Mariam" loading="lazy" width="100" height="100" class="client-avatar">
+                        </picture>
+                        <div>
+                            <h4>Mariam K.</h4>
+                            <span>Nouvelle cliente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--reservation-->
+<section id="reservation">
+    <div class="container">
+        <h2 class="mini-title">Réservation</h2>
+        <h3 class="reservation-subtitle">Remplissez ce formulaire pour faire une réservation</h3>
+        <form id="reservationForm" action="https://formspree.io/f/xnqenqgz" method="POST">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Votre Nom</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="guests">Personnes</label>
+                <input type="number" id="guests" name="guests" min="1" max="20" required>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required min="">
+            </div>
+            
+            <div class="form-group">
+                <label for="time">Heure</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Message (optionnel)</label>
+            <textarea id="message" name="message" placeholder="Demandes spéciales, allergies, etc."></textarea>
+        </div>
+        
+        <button type="submit" id="btn-reservation" class="btn-reservation">
+            <i class="fas fa-calendar-check"></i> Réserver maintenant
+        </button>
+    </form>
+</section>
+<!-- Section Nous Trouver -->
+<section id="find-us" class="find-us-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="mini-title">Nous Trouver</h2>
+            <h3 class="title">Venez nous rendre visite</h3>
+            
+            <p class="section-description">Retrouvez-nous facilement grâce à nos différentes adresses et horaires d'ouverture</p>
+        </div>
+        
+        <div class="find-us-grid">
+            <!-- Carte -->
+            <div class="map-container" data-aos="fade-right" data-aos-delay="100">
+                <div class="map-wrapper">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.00510437107!2d2.109454315000376!3d13.512805990474512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11d8f5a3c3b5b5b5%3A0x1e3b5b5b5b5b5b5b!2sNiamey%2C%20Niger!5e0!3m2!1sfr!2sne!4v1630000000000!5m2!1sfr!2sne" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; border-radius: 15px;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localisation sur la carte">
+                    </iframe>
+                </div>
+                
+                <!-- Réseaux sociaux -->
+                <div class="social-section">
+                    <h5>Suivez-nous</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" aria-label="Facebook" data-tooltip="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram" data-tooltip="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter" data-tooltip="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/22787171269" class="social-icon" aria-label="WhatsApp" data-tooltip="WhatsApp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<footer>
+    <div class="service-list">
+        <div class="service">
+            <i class="far fa-clock"></i>
+            <h4>Horaires</h4>
+            <p><i class="far fa-sun"></i> 10h30 - 23h45</p>
+            <p><i class="far fa-moon"></i> 23h45 - 9h30</p>
+        </div>
+        <div class="service">
+            <i class="fas fa-map-marker-alt"></i>
+            <h4>Adresse</h4>
+            <p>Niamey - Niger</p>
+            <p>Riad - Arabie saoudite</p>
+        </div>
+        <div class="service">
+            <i class="far fa-envelope"></i>
+            <h4>Email</h4>
+            <p>Abba@gmail.com</p>
+        </div>
+        <div class="service">
+            <i class="fas fa-phone-alt"></i>
+            <h4>Téléphone</h4>
+            <p>+227 91 23 08 09</p>
+            <p>+348 70 04 55 496</p>
+        </div>
+        <hr>
+    </div>
+
+    <p class="footer-text">Réalisation de <span><a href="https://Abdoul332.github.io/a-works" style="text-decoration: none; color: #27ae60;" rel="noopener noreferrer">A-works</a> | Développement web et expertise SEO | Vitesse, indexation et fonctionnalités web essentielles</span> | Tous droits réservés.</p>
+</footer>
+
+<!-- Chargement optimisé des ressources externes -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+<!-- Chargement du JavaScript principal -->
+<script src="script.js" defer></script>
+
+<!-- Chargement différé des images non critiques -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Chargement différé des images non critiques
+        const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+        
+        if ('loading' in HTMLImageElement.prototype) {
+            // Le navigateur supporte le lazy loading natif
+            const lazyImageObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        lazyImageObserver.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach((img) => {
+                lazyImageObserver.observe(img);
+            });
+        }
+    });
+</script>
+</body>
+</html>
