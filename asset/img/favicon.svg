@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Fond circulaire bleu foncé -->
+  <circle cx="16" cy="16" r="16" fill="#001F3F"/>
+  
+  <!-- Lettre N stylisée -->
+  <path d="M8 8 L8 24 L12 24 L12 14 L16 20 L20 14 L20 24 L24 24 L24 8 L20 8 L16 14 L12 8 L8 8Z" 
+        fill="#FFB700" 
+        stroke="none"/>
+  
+  <!-- Accent doré -->
+  <circle cx="24" cy="8" r="2" fill="#FFD700" opacity="0.8"/>
+</svg>

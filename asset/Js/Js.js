@@ -1,78 +1,3 @@
-// Création et ajout de la bannière de maintenance
-const createMaintenanceBanner = () => {
-    const banner = document.createElement('div');
-    banner.id = 'maintenance-banner';
-    banner.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(90deg, #1e88e5, #1565c0);
-        color: #ffffff;
-        padding: 10px 0;
-        text-align: center;
-        z-index: 9999;
-        font-size: 16px;
-        border-bottom: 2px solid #0d47a1;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        opacity: 1;
-        transition: all 0.5s ease-out;
-    `;
-
-    banner.innerHTML = `
-        <div style="
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        ">
-            <span style="text-align: center; padding-right: 30px; font-size: 1em;">Site en cours d'amélioration - Merci de votre patience !</span>
-            <button id="close-banner" style="
-                background: rgba(255, 255, 255, 0.2);
-                border: 1px solid #ffffff;
-                color: #ffffff;
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-                padding: 2px 8px;
-                border-radius: 3px;
-                cursor: pointer;
-                font-size: 12px;
-                line-height: 1;
-            ">×</button>
-        </div>
-    `;
-
-    // Ajout au début du body
-    document.body.insertBefore(banner, document.body.firstChild);
-
-    // Gestion de la fermeture
-    const closeBanner = () => {
-        banner.style.opacity = '0';
-        setTimeout(() => banner.style.display = 'none', 500);
-    };
-
-    // Fermeture au clic
-    const closeButton = document.getElementById('close-banner');
-    if (closeButton) {
-        closeButton.onclick = closeBanner;
-    }
-
-    // Fermeture automatique après 15 secondes
-    setTimeout(closeBanner, 15000);
-};
-
-// Appel de la fonction quand le DOM est chargé
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createMaintenanceBanner);
-} else {
-    createMaintenanceBanner();
-}
-
 document.addEventListener('DOMContentLoaded', function() {
 
     const hasGSAP = typeof window.gsap !== 'undefined';
@@ -165,119 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.section-header, .service-card, .value-card, .process-step').forEach(el => animateObserver.observe(el));
     }
 
-    // ----------- TESTIMONIAL SLIDER (SÉCURISÉ) -----------
-    const testimonials = Array.from(document.querySelectorAll('.testimonial-item'));
-    const dots = Array.from(document.querySelectorAll('.nav-dot'));
-    const slider = document.querySelector('.testimonials-container');
-
-    if (testimonials.length > 0 && dots.length === testimonials.length) {
-        let currentTestimonial = 0;
-        let autoplayInterval = null;
-        let isHovered = false;
-
-        const startHoverListeners = () => {
-            if (!slider) return;
-            slider.addEventListener('mouseenter', () => { isHovered = true; });
-            slider.addEventListener('mouseleave', () => { isHovered = false; });
-        };
-
-        const startAutoplay = (callback) => {
-            if (autoplayInterval) clearInterval(autoplayInterval);
-            autoplayInterval = setInterval(() => {
-                if (!isHovered) callback();
-            }, 5000);
-        };
-
-        if (hasGSAP) {
-            const createTimeline = (currentIndex, nextIndex) => {
-                const current = testimonials[currentIndex];
-                const next = testimonials[nextIndex];
-
-                testimonials.forEach(t => t.style.zIndex = '1');
-                current.style.zIndex = '2';
-                next.style.zIndex = '3';
-
-                const timeline = gsap.timeline({
-                    defaults: { duration: 0.8, ease: 'power3.out' }
-                });
-
-                timeline
-                    .set(next, { display: 'block' })
-                    .fromTo(next,
-                        { opacity: 0, xPercent: 35, rotateY: 15, scale: 0.92, filter: 'blur(6px)' },
-                        { opacity: 1, xPercent: 0, rotateY: 0, scale: 1, filter: 'blur(0px)', duration: 0.9 }
-                    )
-                    .to(current,
-                        { opacity: 0, xPercent: -35, rotateY: -20, scale: 0.9, filter: 'blur(6px)' },
-                        '-=0.8'
-                    )
-                    .add(() => {
-                        testimonials.forEach((t, i) => {
-                            if (i === nextIndex) {
-                                t.classList.add('active');
-                                gsap.set(t, { clearProps: 'all' });
-                            } else {
-                                t.classList.remove('active');
-                                gsap.set(t, { clearProps: 'all', display: i === nextIndex ? 'block' : 'none' });
-                            }
-                        });
-                    });
-            };
-
-            const showTestimonial = (index) => {
-                if (index === currentTestimonial) return;
-                const nextIndex = index;
-                createTimeline(currentTestimonial, nextIndex);
-                currentTestimonial = nextIndex;
-                dots.forEach((d, i) => d.classList.toggle('active', i === nextIndex));
-            };
-
-            const nextTestimonial = () => {
-                const nextIndex = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(nextIndex);
-            };
-
-            dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => {
-                    startAutoplay(nextTestimonial);
-                    showTestimonial(i);
-                });
-            });
-
-            testimonials.forEach((testimonial, index) => {
-                gsap.set(testimonial, { display: index === 0 ? 'block' : 'none' });
-            });
-            dots[0].classList.add('active');
-            startHoverListeners();
-            startAutoplay(nextTestimonial);
-        } else {
-            // Fallback sans GSAP
-            const applyState = (index) => {
-                testimonials.forEach((testimonial, i) => {
-                    testimonial.classList.toggle('active', i === index);
-                    testimonial.style.display = i === index ? 'block' : 'none';
-                });
-                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-            };
-
-            const nextTestimonial = () => {
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                applyState(currentTestimonial);
-            };
-
-            dots.forEach((dot, i) => {
-                dot.addEventListener('click', () => {
-                    currentTestimonial = i;
-                    applyState(i);
-                    startAutoplay(nextTestimonial);
-                });
-            });
-
-            applyState(0);
-            startHoverListeners();
-            startAutoplay(nextTestimonial);
-        }
-    }
 
     // ----------- CONTACT SECTION ANIMATIONS -----------
     const contactSection = document.getElementById('contact');
@@ -394,6 +206,33 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         document.querySelectorAll('img[data-src], img[data-srcset]').forEach(img => imageObserver.observe(img));
+    }
+
+    // ----------- NEXXA STATS COUNTERS -----------
+    const nexxaStats = document.querySelector('.nexxa-stats');
+    if (nexxaStats && 'IntersectionObserver' in window) {
+        const statNumbers = Array.from(nexxaStats.querySelectorAll('.nexxa-stat-number'));
+        const parts = statNumbers.map(item => {
+            const text = item.textContent.trim();
+            const match = text.match(/^(.*?)(\d+)(.*)$/);
+            if (!match) return null;
+            return {
+                el: item,
+                prefix: match[1],
+                target: parseInt(match[2], 10),
+                suffix: match[3]
+            };
+        }).filter(Boolean);
+
+                    if (entry.isIntersecting) {
+                        animateNexxaStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(nexxaStats);
+        }
     }
 
     // ----------- HERO MINI GRAPH ANIMATION -----------
