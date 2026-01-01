@@ -2,6 +2,147 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const hasGSAP = typeof window.gsap !== 'undefined';
 
+    // ----------- FORMULAIRE DE CONTACT FONCTIONNEL -----------
+    // Plusieurs sélecteurs pour s'assurer de trouver le formulaire
+    const contactForm = document.querySelector('form[action="mailto:nexawork332@gmail.com"]') || 
+                       document.querySelector('.nexa-hover-card form') ||
+                       document.querySelector('form');
+    
+    console.log('Formulaire trouvé:', contactForm); // Débogage
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            console.log('Soumission du formulaire détectée'); // Débogage
+            e.preventDefault(); // Empêche l'envoi par défaut
+            
+            // Récupération des données du formulaire
+            const formData = new FormData(this);
+            const nom = formData.get('nom') || '';
+            const email = formData.get('email') || '';
+            const telephone = formData.get('telephone') || '';
+            const besoin = formData.get('besoin') || '';
+            const projet = formData.get('projet') || '';
+            
+            // Validation des champs
+            if (!nom.trim() || !email.trim() || !telephone.trim() || !besoin || !projet.trim()) {
+                showMessage('Veuillez remplir tous les champs du formulaire.', 'error');
+                return;
+            }
+            
+            // Validation de l'email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Veuillez entrer une adresse email valide.', 'error');
+                return;
+            }
+            
+            // Validation du téléphone (format simple)
+            const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+            if (!phoneRegex.test(telephone) || telephone.length < 8) {
+                showMessage('Veuillez entrer un numéro de téléphone valide.', 'error');
+                return;
+            }
+            
+            // Préparation du sujet et du corps de l'email
+            const subject = encodeURIComponent(`Nouveau projet - ${nom}`);
+            const body = encodeURIComponent(
+                `Nom: ${nom}\n` +
+                `Email: ${email}\n` +
+                `Téléphone: ${telephone}\n` +
+                `Besoin: ${besoin}\n\n` +
+                `Description du projet:\n${projet}\n\n` +
+                `---\n` +
+                `Envoyé depuis le site Nexa Work`
+            );
+            
+            // Construction de l'URL mailto
+            const mailtoUrl = `mailto:nexawork332@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Affichage d'un message de confirmation
+            showMessage('Préparation de l\'envoi...', 'info');
+            
+            // Petite pause pour l'UX puis ouverture du client email
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+                showMessage('Votre client email s\'ouvre. Vous pouvez envoyer le message directement.', 'success');
+                
+                // Réinitialisation du formulaire après un délai
+                setTimeout(() => {
+                    contactForm.reset();
+                }, 2000);
+            }, 1000);
+        });
+        
+        // Alternative : gestionnaire sur le bouton submit
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function(e) {
+                console.log('Clic sur le bouton détecté'); // Débogage
+                e.preventDefault();
+                
+                // Déclencher manuellement la validation et l'envoi
+                const event = new Event('submit', { cancelable: true });
+                contactForm.dispatchEvent(event);
+            });
+        }
+    } else {
+        console.log('Formulaire non trouvé'); // Débogage
+    }
+    
+    // Fonction pour afficher des messages
+    function showMessage(message, type = 'info') {
+        // Création de l'élément message
+        const messageDiv = document.createElement('div');
+        messageDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            z-index: 10000;
+            max-width: 300px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        `;
+        
+        // Style selon le type de message
+        switch(type) {
+            case 'success':
+                messageDiv.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                messageDiv.style.color = 'white';
+                break;
+            case 'error':
+                messageDiv.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                messageDiv.style.color = 'white';
+                break;
+            case 'info':
+            default:
+                messageDiv.style.background = 'linear-gradient(135deg, #00438B, #003366)';
+                messageDiv.style.color = 'white';
+                break;
+        }
+        
+        messageDiv.textContent = message;
+        document.body.appendChild(messageDiv);
+        
+        // Animation d'entrée
+        setTimeout(() => {
+            messageDiv.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Auto-suppression après 5 secondes
+        setTimeout(() => {
+            messageDiv.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.parentNode.removeChild(messageDiv);
+                }
+            }, 300);
+        }, 5000);
+    }
+
     // ----------- MENU HAMBURGER MOBILE -----------
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.getElementById('nav-menu');
@@ -224,14 +365,16 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         }).filter(Boolean);
 
-                    if (entry.isIntersecting) {
-                        animateNexxaStats();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNexxaStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
 
-            statsObserver.observe(nexxaStats);
+        statsObserver.observe(nexxaStats);
         }
     }
 

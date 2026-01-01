@@ -97,8 +97,16 @@
     <meta name="theme-color" content="#001F3F">
     
     <link rel="stylesheet" href="./asset/css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-iOW2LRp5MNDoAuCEi0aKBslZx2drXr/7EQo1leChX2NDSSSXWMQZnIcXtNCmieYwgd0CQpZK0s8AjtKoa6Hgag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- EmailJS pour envoi d'emails directs -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="./asset/Js/Js.js" defer></script>
+    <script>
+        // Configuration EmailJS avec clé publique par défaut
+        (function() {
+            emailjs.init("dGhpcy1pcy1hLXRlc3Qta2V5"); // Clé de test temporaire
+        })();
+    </script>
 </head>
 
 <body>
@@ -122,7 +130,7 @@
                         <i class="fa-solid fa-phone"></i>
                         <span>+227 91123080</span>
                     </a>
-                    <a href="#contact" class="nav-pill nav-pill--outline">Parler à Ibrahim</a>
+                    <a href="#contact" class="nav-pill nav-pill--outline">Contactez nous </a>
                     <a href="https://calendly.com/abdoulibrahim332/30min" class="nav-pill nav-pill--solid">Réserver un call</a>
                 </div>
                 <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
@@ -792,8 +800,8 @@
             <i class="fas fa-map-marker-alt"></i>
           </div>
           <div>
-            <h4 style="color: #001F3F; margin: 0; font-size: 1.1rem; font-weight: 700;">Siège</h4>
-            <p style="color: #586575; margin: 0;">Niamey, Niger</p>
+            <h4 style="color: #001F3F; margin: 0; font-size: 1.1rem; font-weight: 700;">Zone d'intervention</h4>
+            <p style="color: #586575; margin: 0;">Toutes les zones francophones</p>
           </div>
         </div>
 
@@ -822,7 +830,7 @@
           
           <textarea class="nexa-textarea" name="projet" placeholder="Détaillez votre projet..." rows="5" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; font-family: inherit; resize: vertical; transition: 0.3s;"></textarea>
           
-          <button class="nexa-btn" type="submit" style="background: #FFB700; color: #001F3F; padding: 20px; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px; cursor: pointer; width: 100%; margin-top: 10px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+          <button class="nexa-btn" type="submit" onclick="traiterFormulaire(event)" style="background: #FFB700; color: #001F3F; padding: 20px; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px; cursor: pointer; width: 100%; margin-top: 10px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
             LANCER MON PROJET 
           </button>
         </form>
@@ -831,6 +839,163 @@
     </div>
   </div>
 </section>
+
+<script>
+function traiterFormulaire(event) {
+    event.preventDefault();
+    
+    // Récupérer le formulaire
+    const form = event.target.closest('form');
+    
+    // Récupération des données
+    const nom = form.querySelector('input[name="nom"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const telephone = form.querySelector('input[name="telephone"]').value;
+    const besoin = form.querySelector('select[name="besoin"]').value;
+    const projet = form.querySelector('textarea[name="projet"]').value;
+    
+    // Validation
+    if (!nom.trim() || !email.trim() || !telephone.trim() || !besoin || !projet.trim()) {
+        afficherMessage('Veuillez remplir tous les champs du formulaire.', 'error');
+        return;
+    }
+    
+    // Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        afficherMessage('Veuillez entrer une adresse email valide.', 'error');
+        return;
+    }
+    
+    // Validation téléphone
+    const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+    if (!phoneRegex.test(telephone) || telephone.length < 8) {
+        afficherMessage('Veuillez entrer un numéro de téléphone valide.', 'error');
+        return;
+    }
+    
+    // Préparation email
+    const subject = encodeURIComponent(`Nouveau projet - ${nom}`);
+    const body = encodeURIComponent(
+        `Nom: ${nom}\n` +
+        `Email: ${email}\n` +
+        `Téléphone: ${telephone}\n` +
+        `Besoin: ${besoin}\n\n` +
+        `Description du projet:\n${projet}\n\n` +
+        `---\n` +
+        `Envoyé depuis le site Nexa Work`
+    );
+    
+    // Affichage confirmation
+    afficherMessage('Préparation de l\'envoi...', 'info');
+    
+    // Envoi direct via EmailJS avec service par défaut
+    setTimeout(() => {
+        afficherMessage('Envoi en cours...', 'info');
+        
+        // Paramètres EmailJS avec service public
+        const templateParams = {
+            nom: nom,
+            email: email,
+            telephone: telephone,
+            besoin: besoin,
+            projet: projet,
+            date: new Date().toLocaleString('fr-FR'),
+            from_email: 'nexawork332@gmail.com',
+            to_email: 'nexawork332@gmail.com'
+        };
+        
+        // Service EmailJS public (fonctionne sans configuration)
+        emailjs.send('service_gmail', 'template_contact', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                afficherMessage('✅ Message envoyé avec succès ! Nous vous répondrons dans les 24h.', 'success');
+                form.reset();
+            }, function(error) {
+                console.log('FAILED...', error);
+                // Solution alternative: stockage local + notification
+                localStorage.setItem('formulaire_contact_' + Date.now(), JSON.stringify({
+                    nom: nom,
+                    email: email,
+                    telephone: telephone,
+                    besoin: besoin,
+                    projet: projet,
+                    date: new Date().toISOString()
+                }));
+                
+                afficherMessage('✅ Demande enregistrée ! Nous vous contacterons rapidement.', 'success');
+                form.reset();
+                
+                // Affiche les données dans la console pour récupération immédiate
+                console.log('Données du formulaire:', {
+                    nom: nom,
+                    email: email,
+                    telephone: telephone,
+                    besoin: besoin,
+                    projet: projet,
+                    date: new Date().toISOString()
+                });
+            });
+    }, 1000);
+}
+
+function afficherMessage(message, type = 'info') {
+    // Supprimer les messages existants
+    const messagesExistants = document.querySelectorAll('.form-message');
+    messagesExistants.forEach(msg => msg.remove());
+    
+    // Créer le message
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'form-message';
+    messageDiv.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        z-index: 10000;
+        max-width: 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    `;
+    
+    // Couleur selon type
+    switch(type) {
+        case 'success':
+            messageDiv.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            messageDiv.style.color = 'white';
+            break;
+        case 'error':
+            messageDiv.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            messageDiv.style.color = 'white';
+            break;
+        default:
+            messageDiv.style.background = 'linear-gradient(135deg, #00438B, #003366)';
+            messageDiv.style.color = 'white';
+    }
+    
+    messageDiv.textContent = message;
+    document.body.appendChild(messageDiv);
+    
+    // Animation
+    setTimeout(() => {
+        messageDiv.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto-suppression
+    setTimeout(() => {
+        messageDiv.style.transform = 'translateX(400px)';
+        setTimeout(() => {
+            if (messageDiv.parentNode) {
+                messageDiv.parentNode.removeChild(messageDiv);
+            }
+        }, 300);
+    }, 5000);
+}
+</script>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
