@@ -4253,3 +4253,229 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* --- Section Contact --- */
+#contact {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #F0F7FF 0%, #E8F2FF 50%, #F5FBFF 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* En-tête de section */
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-badge {
+    background: #FFB700;
+    color: #001F3F;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-title {
+    color: #001F3F;
+    font-size: 3rem;
+    margin-top: 25px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.contact-title span {
+    color: #00438B;
+}
+
+.contact-desc {
+    color: #586575;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+/* Grille de mise en page */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Cartes (Info et Formulaire) */
+.nexa-card {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+/* Carte Info (Gauche) */
+.contact-info-card {
+    box-shadow: 0 10px 30px rgba(0, 31, 63, 0.04);
+    border: 1px solid rgba(0, 67, 139, 0.05);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-icon {
+    width: 50px;
+    height: 50px;
+    background: #FFF4CC;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #00438B;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.info-content h4 {
+    color: #001F3F;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.info-link, .info-text {
+    color: #00438B;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0;
+}
+
+.info-text {
+    color: #586575;
+}
+
+/* Carte Formulaire (Droite) */
+.contact-form-card {
+    box-shadow: 0 15px 40px rgba(0, 31, 63, 0.06);
+    border: 1px solid rgba(0, 67, 139, 0.05);
+}
+
+.nexa-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Styles des Inputs, Select et Textarea */
+.nexa-input, 
+.nexa-select, 
+.nexa-textarea {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #E6EBF2;
+    border-radius: 12px;
+    background: #F8FBFF;
+    outline: none;
+    font-size: 1rem;
+    color: #001F3F;
+    transition: 0.3s;
+    font-family: inherit;
+}
+
+.nexa-textarea {
+    resize: vertical;
+}
+
+/* Select wrapper customisé */
+.select-wrapper {
+    position: relative;
+}
+
+.nexa-select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #00438B;
+}
+
+/* Bouton */
+.nexa-btn {
+    background: #FFB700;
+    color: #001F3F;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Animations et États (Hover/Focus) --- */
+
+/* Focus des champs */
+.nexa-input:focus, 
+.nexa-select:focus, 
+.nexa-textarea:focus {
+    border-color: #00438B !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 4px rgba(0, 67, 139, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+/* Hover des cartes */
+.nexa-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 67, 139, 0.1) !important;
+}
+
+/* Hover du bouton */
+.nexa-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 183, 0, 0.3) !important;
+    background-color: #FFC529 !important;
+}
+
+/* Responsive (Mobile) */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Empile les colonnes */
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr; /* Empile les champs nom/email */
+    }
+    
+    .contact-title {
+        font-size: 2rem;
+    }
+}

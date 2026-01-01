@@ -738,99 +738,69 @@
         </div>
     </section>
 
-     <section id="contact" style="padding: 100px 0; background: linear-gradient(135deg, #F0F7FF 0%, #E8F2FF 50%, #F5FBFF 100%); position: relative; overflow: hidden;">
-  
-  <style>
-    /* Animation des champs quand on clique dedans */
-    .nexa-input:focus, .nexa-select:focus, .nexa-textarea:focus {
-      border-color: #00438B !important;
-      background-color: #FFFFFF !important;
-      box-shadow: 0 0 0 4px rgba(0, 67, 139, 0.1) !important;
-      transform: translateY(-2px);
-    }
+     <<section id="contact">
+  <div class="contact-container">
     
-    /* Animation du bouton au survol */
-    .nexa-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(255, 183, 0, 0.3) !important;
-      background-color: #FFC529 !important; /* Un jaune un peu plus clair */
-    }
-
-    /* Animation des cartes au survol */
-    .nexa-hover-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(0, 67, 139, 0.1) !important;
-    }
-  </style>
-
-  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    
-    <div style="text-align: center; margin-bottom: 60px;">
-      <span style="background: #FFB700; color: #001F3F; padding: 8px 20px; border-radius: 50px; font-weight: 800; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">Contact</span>
-      <h2 style="color: #001F3F; font-size: 3rem; margin-top: 25px; font-weight: 800; line-height: 1.2;">Parlons de votre <span style="color: #00438B;">Croissance</span>.</h2>
-      <p style="color: #586575; margin-top: 15px; font-size: 1.1rem;">Une question ? Un projet ? Réponse garantie sous 24h.</p>
+    <div class="contact-header">
+      <span class="contact-badge">Contact</span>
+      <h2 class="contact-title">Parlons de votre <span>Croissance</span>.</h2>
+      <p class="contact-desc">Une question ? Un projet ? Réponse garantie sous 24h.</p>
     </div>
 
-    <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; align-items: start;">
+    <div class="contact-grid">
       
-      <div class="nexa-hover-card" style="background: #FFFFFF; padding: 40px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0, 31, 63, 0.04); border: 1px solid rgba(0, 67, 139, 0.05); transition: all 0.3s ease;">
+      <div class="nexa-card contact-info-card">
         
-        <div style="display: flex; align-items: center; margin-bottom: 35px;">
-          <div style="width: 50px; height: 50px; background: #FFF4CC; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #00438B; margin-right: 20px;">
-            <i class="fas fa-phone"></i>
-          </div>
-          <div>
-            <h4 style="color: #001F3F; margin: 0; font-size: 1.1rem; font-weight: 700;">Téléphone</h4>
-            <a href="tel:+22791123080" style="color: #00438B; text-decoration: none; font-weight: 600;">+227 91 12 30 80</a>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-phone"></i></div>
+          <div class="info-content">
+            <h4>Téléphone</h4>
+            <a href="tel:+22791123080" class="info-link">+227 91 12 30 80</a>
           </div>
         </div>
 
-        <div style="display: flex; align-items: center; margin-bottom: 35px;">
-          <div style="width: 50px; height: 50px; background: #FFF4CC; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #00438B; margin-right: 20px;">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div>
-            <h4 style="color: #001F3F; margin: 0; font-size: 1.1rem; font-weight: 700;">Email</h4>
-            <a href="mailto:nexawork332@gmail.com" style="color: #00438B; text-decoration: none; font-weight: 600;">nexawork332@gmail.com</a>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-envelope"></i></div>
+          <div class="info-content">
+            <h4>Email</h4>
+            <a href="mailto:nexawork332@gmail.com" class="info-link">nexawork332@gmail.com</a>
           </div>
         </div>
 
-        <div style="display: flex; align-items: center;">
-          <div style="width: 50px; height: 50px; background: #FFF4CC; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #00438B; margin-right: 20px;">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div>
-            <h4 style="color: #001F3F; margin: 0; font-size: 1.1rem; font-weight: 700;">Zone d'intervention</h4>
-            <p style="color: #586575; margin: 0;">Toutes les zones francophones</p>
+        <div class="info-item">
+          <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div class="info-content">
+            <h4>Zone d'intervention</h4>
+            <p class="info-text">Toutes les zones francophones</p>
           </div>
         </div>
 
       </div>
 
-      <div class="nexa-hover-card" style="background: #FFFFFF; padding: 40px; border-radius: 24px; box-shadow: 0 15px 40px rgba(0, 31, 63, 0.06); border: 1px solid rgba(0, 67, 139, 0.05); transition: all 0.3s ease;">
-        <form action="mailto:nexawork332@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px;">
+      <div class="nexa-card contact-form-card">
+        <form action="mailto:nexawork332@gmail.com" method="post" enctype="text/plain" class="nexa-form">
           
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <input class="nexa-input" name="nom" type="text" placeholder="Votre nom" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; transition: 0.3s;">
-            <input class="nexa-input" name="email" type="email" placeholder="Votre email" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; transition: 0.3s;">
+          <div class="form-row">
+            <input class="nexa-input" name="nom" type="text" placeholder="Votre nom">
+            <input class="nexa-input" name="email" type="email" placeholder="Votre email">
           </div>
           
-          <input class="nexa-input" name="telephone" type="tel" placeholder="Numéro de téléphone" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; transition: 0.3s;">
+          <input class="nexa-input" name="telephone" type="tel" placeholder="Numéro de téléphone">
           
-          <div style="position: relative;">
-            <select class="nexa-select" name="besoin" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; appearance: none; cursor: pointer; transition: 0.3s;">
+          <div class="select-wrapper">
+            <select class="nexa-select" name="besoin">
               <option disabled selected>Quel est votre besoin ?</option>
               <option>Création de Site Web</option>
               <option>Audit & Stratégie SEO</option>
               <option>E-commerce & Vente</option>
               <option>Autre demande</option>
             </select>
-            <div style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #00438B;">▼</div>
+            <div class="select-arrow">▼</div>
           </div>
           
-          <textarea class="nexa-textarea" name="projet" placeholder="Détaillez votre projet..." rows="5" style="width: 100%; padding: 18px; border: 1px solid #E6EBF2; border-radius: 12px; background: #F8FBFF; outline: none; font-size: 1rem; color: #001F3F; font-family: inherit; resize: vertical; transition: 0.3s;"></textarea>
+          <textarea class="nexa-textarea" name="projet" placeholder="Détaillez votre projet..." rows="5"></textarea>
           
-          <button class="nexa-btn" type="submit" onclick="traiterFormulaire(event)" style="background: #FFB700; color: #001F3F; padding: 20px; border: none; border-radius: 12px; font-weight: 800; font-size: 1rem; letter-spacing: 0.5px; cursor: pointer; width: 100%; margin-top: 10px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+          <button class="nexa-btn" type="submit" onclick="traiterFormulaire(event)">
             LANCER MON PROJET 
           </button>
         </form>
