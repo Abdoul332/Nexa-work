@@ -1973,14 +1973,24 @@
         }
 
         .portfolio-link {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--nexa-blue);
             font-weight: 600;
             text-decoration: none;
             letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            padding: 3px 6px;
+            border: 2px solid var(--nexa-blue);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
         }
 
         .portfolio-link:hover {
-            color: var(--secondary);
+            color: var(--surface-white);
+            background: var(--nexa-blue);
+            transform: translateY(-2px);
         }
 
         .portfolio-cta {
@@ -2648,6 +2658,21 @@
 
             .logo-mobile {
                 display: block;
+                width: 40px;
+                height: auto;
+            }
+            
+            /* Header mobile avec fond pour visibilité */
+            .navbar {
+                background: rgba(0, 67, 139, 0.85);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .navbar.scrolled {
+                background: rgba(0, 67, 139, 0.95);
+                box-shadow: var(--shadow-lg);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             }
             
             /* Navigation responsive - Menu hamburger */

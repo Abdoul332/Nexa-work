@@ -163,13 +163,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Ferme le menu quand on clique sur un lien
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenuBtn.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+        if (navLinks.length > 0) {
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
             });
-        });
+        }
         
         // Ferme le menu si on redimensionne vers desktop
         window.addEventListener('resize', function() {
@@ -375,7 +377,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, { threshold: 0.5 });
 
         statsObserver.observe(nexxaStats);
-        }
     }
 
     // ----------- HERO MINI GRAPH ANIMATION -----------
