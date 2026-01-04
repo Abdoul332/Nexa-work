@@ -639,6 +639,14 @@
                 display: none;
             }
 
+            .nav-menu.active .nav-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                width: 100%;
+            }
+
             .mobile-menu-btn {
                 display: inline-flex;
             }
