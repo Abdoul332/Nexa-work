@@ -3763,7 +3763,7 @@
 
         /* Title */
         .nexxa-hero-title {
-            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-size: clamp(3rem, 6.5vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin: 0 0 1.5rem;
@@ -3782,7 +3782,7 @@
 
         /* Subtitle */
         .nexxa-hero-subtitle {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
             max-width: 700px;
@@ -4107,27 +4107,32 @@
                 align-items: center;
                 gap: 4rem;
                 text-align: left;
-                max-width: 1280px;
-                margin: 0 auto;
-                padding: 0 2rem;
             }
             
             .nexxa-hero-text {
                 text-align: left;
-                margin: 0;
-                padding: 0 1rem 0 0;
-                max-width: 100%;
+                align-items: flex-start;
             }
             
-            .nexxa-cta-group {
-                justify-content: flex-start;
-                margin-bottom: 2.5rem;
+            .nexxa-hero-title {
+                text-align: left;
+                margin: 0 0 1.5rem;
+            }
+            
+            .nexxa-hero-subtitle {
+                text-align: left;
+                margin: 0 0 2.5rem;
             }
             
             .nexxa-stats {
                 justify-content: flex-start;
                 margin-top: 2.5rem;
                 padding-top: 2rem;
+            }
+            
+            .nexxa-cta-group {
+                justify-content: flex-start;
+                margin-bottom: 3rem;
             }
             
             .nexxa-hero-visual {
@@ -4167,76 +4172,22 @@
                 font-size: 2rem;
             }
             
-            .nexxa-cta-group {
-                justify-content: center;
-            }
-        }
 
-        @media (max-width: 767px) {
-            .nexxa-hero {
-                padding: 4rem 0;
+            .nexxa-metric-primary {
+                background: linear-gradient(135deg, rgba(0, 67, 139, 0.15), rgba(0, 67, 139, 0.25));
+                border-color: rgba(0, 67, 139, 0.3);
             }
-            
-            .nexxa-container {
-                padding: 0 1.5rem;
-            }
-            
-            .nexxa-hero-content {
-                gap: 3rem;
-            }
-            
-            .nexxa-badge {
-                padding: 0.5rem 1rem;
+
+            .nexxa-metric-label {
                 font-size: 0.8rem;
-                margin: 0 auto 1.5rem;
+                color: rgba(255, 255, 255, 0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 0.5rem;
+                display: block;
             }
-            
-            .nexxa-hero-title {
-                font-size: clamp(2rem, 7vw, 2.8rem);
-                line-height: 1.2;
-                margin: 0 auto 1.5rem;
-            }
-            
-            .nexxa-hero-subtitle {
-                font-size: 1rem;
-                margin: 0 auto 2.5rem;
-                max-width: 95%;
-            }
-            
-            .nexxa-cta-group {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
-                margin: 0 auto 2rem;
-            }
-            
-            .nexxa-btn {
-                width: 100%;
-                justify-content: center;
-                margin: 0 !important;
-            }
-            
-            .nexxa-stats {
-                gap: 1.5rem;
-                justify-content: center;
-                margin-top: 2rem;
-            }
-            
-            .nexxa-stat-number {
-                font-size: 1.75rem;
-            }
-            
-            .nexxa-hero-visual {
-                margin: 2rem auto 0;
-                max-width: 100%;
-                padding: 0;
-                text-align: center;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .nexxa-hero {
-                padding: 3.5rem 0;
+
+            .nexxa-metric-value {
             }
             
             .nexxa-container {

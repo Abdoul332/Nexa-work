@@ -123,19 +123,27 @@
     <link rel="icon" type="image/png" href="./asset/img/Profil.png" />
     <meta name="theme-color" content="#001F3F" />
 
+    <link rel="preload" href="./asset/img/assets/Web-p/Jean VLM.webp" as="image">
+    <link rel="preload" href="./asset/img/assets/Web-p/Marie.webp" as="image">
+    <link rel="preload" href="./asset/img/assets/Web-p/Lucrce.webp" as="image">
+    <link rel="preload" href="./asset/img/assets/Web-p/Cleseon.webp" as="image">
+
     <link rel="stylesheet" href="./asset/css/style.css" />
     <!-- EmailJS pour envoi d'emails directs -->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+      defer
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="./asset/Js/Js.js" defer></script>
     <script>
       // Configuration EmailJS avec votre clé publique
-      (function () {
-        emailjs.init("LAXCbuG7pf_tAUYCp"); // Votre clé publique
-      })();
+      window.addEventListener('DOMContentLoaded', function() {
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init("LAXCbuG7pf_tAUYCp"); // Votre clé publique
+        }
+      });
     </script>
   </head>
 
@@ -146,12 +154,12 @@
         <div class="nav-container">
           <a href="#" class="logo">
             <img
-              src="./asset/img/Nexa Logo v4 PNG.png"
+              src="./asset/img/assets/Nexa-Logo-v4.png"
               alt="Nexa Work"
               class="logo-desktop"
             />
             <img
-              src="./asset/img/Profil.png"
+              src="./asset/img/assets/Profil.webp"
               alt="Nexa Work"
               class="logo-mobile"
             />
@@ -246,7 +254,7 @@
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <a href="#contact" class="nexxa-btn nexxa-btn-primary">
+              <a href="#contact" class="nexxa-btn nexxa-btn-primary" aria-label="Propulser votre impact avec Nexa Work">
                 <span>Propulser mon impact</span>
                 <svg
                   width="20"
@@ -255,6 +263,7 @@
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
+                  aria-hidden="true"
                 >
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
@@ -270,9 +279,10 @@
             <div class="nexxa-founder-card">
               <div class="nexxa-founder-header">
                 <img
-                  src="./asset/img/Profil img.jpg"
-                  alt="Ibrahim Ali Abdoulahi"
+                  src="./asset/img/assets/Web-p/Profil img (1).webp"
+                  alt="Ibrahim Ali Abdoulahi - Fondateur Nexa Work"
                   class="nexxa-founder-avatar"
+                  fetchpriority="high"
                 />
                 <div>
                   <h4 class="nexxa-founder-name">Ibrahim Ali Abdoulahi</h4>
@@ -283,8 +293,8 @@
               </div>
               <div class="nexxa-founder-header">
                 <img
-                  src="./asset/img/Collaborateur.jpg"
-                  alt="Ibrahim Ali Abdoulahi"
+                  src="./asset/img/Web-p/aboubacar-sms.webp"
+                  alt="Aboubacar S. M.S - Expert UI/UX Design et Développement React"
                   class="nexxa-founder-avatar"
                 />
                 <div>
@@ -412,7 +422,7 @@
           <div class="portfolio-card" data-category="web">
             <div class="portfolio-image">
               <img
-                src="./asset/img/Lucrece makup.png"
+                src="./asset/img/assets/Web-p/Lucrece makup.webp"
                 alt="Site web coaching Finance &amp; Bien‑Être"
                 loading="lazy"
                 width="400"
@@ -449,7 +459,7 @@
           <div class="portfolio-card" data-category="web">
             <div class="portfolio-image">
               <img
-                src="./asset/img/Infotech makup.png"
+                src="./asset/img/assets/Web-p/Infotech makup.webp"
                 alt="Site magazine professionnel"
                 loading="lazy"
                 width="400"
@@ -485,7 +495,7 @@
           <div class="portfolio-card" data-category="web">
             <div class="portfolio-image">
               <img
-                src="./asset/img/zaynmarket.png"
+                src="./asset/img/assets/Web-p/zayn-market.webp"
                 alt="Plateforme e-commerce Zayn Market"
                 loading="lazy"
                 width="400"
@@ -520,7 +530,7 @@
           <div class="portfolio-card" data-category="linkedin">
             <div class="portfolio-image">
               <img
-                src="./asset/img/linkdin (2).png"
+                src="./asset/img/assets/Web-p/linkdin (2).webp"
                 alt="Stratégie LinkedIn et taux de clics"
                 loading="lazy"
                 width="400"
@@ -555,7 +565,7 @@
           <div class="portfolio-card" data-category="linkedin">
             <div class="portfolio-image">
               <img
-                src="./asset/img/branding-identity.png"
+                src="./asset/img/assets/Web-p/branding-identity.webp"
                 alt="Identité visuelle et branding"
                 loading="lazy"
                 width="400"
@@ -590,7 +600,7 @@
           <div class="portfolio-card" data-category="linkedin">
             <div class="portfolio-image">
               <img
-                src="./asset/img/visual_identity_premium.png"
+                src="./asset/img/assets/Web-p/visual-identity-premium.png"
                 alt="Projet de conception graphique"
                 loading="lazy"
                 width="400"
@@ -622,7 +632,7 @@
           <div class="portfolio-card" data-category="seo">
             <div class="portfolio-image">
               <img
-                src="./asset/img/CONSOL.webp"
+                src="./asset/img/assets/Web-p/seo-console.webp"
                 alt="Données SEO Google Search Console"
                 loading="lazy"
                 width="400"
@@ -652,7 +662,7 @@
           <div class="portfolio-card" data-category="seo">
             <div class="portfolio-image">
               <img
-                src="./asset/img/package-vitesse-desktop-685d1e03d038d.png"
+                src="./asset/img/assets/Web-p/pagespeed-performance.webp"
                 alt="Rapport performance PageSpeed"
                 loading="lazy"
                 width="400"
@@ -683,7 +693,7 @@
           <div class="portfolio-card" data-category="seo">
             <div class="portfolio-image">
               <img
-                src="./asset/img/Analitics img2  (1).webp"
+                src="./asset/img/assets/Web-p/analytics-results.webp"
                 alt="Statistiques Google Analytics"
                 loading="lazy"
                 width="400"
@@ -801,8 +811,8 @@
               itemtype="http://schema.org/Person"
             >
               <img
-                src="./asset/img/avatar témoignages/Jean VLM.jpg"
-                alt="Jean-François VILM"
+                src="./asset/img/assets/Web-p/Jean VLM.webp"
+                alt="Jean-François VILM - Fondateur e-novateur Mentor"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -838,8 +848,8 @@
               itemtype="http://schema.org/Person"
             >
               <img
-                src="./asset/img/avatar témoignages/Marie.jpg"
-                alt="Marie"
+                src="./asset/img/assets/Web-p/Marie.jpg"
+                alt="Marie - Directrice Marketing"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -875,8 +885,8 @@
               itemtype="http://schema.org/Person"
             >
               <img
-                src="./asset/img/avatar témoignages/Lucrce.jpg"
-                alt="Lucrece DOSSOU-YOVO"
+                src="./asset/img/assets/Web-p/Lucrce.webp"
+                alt="Lucrece DOSSOU-YOVO - Coach Business & Entrepreneure"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -912,8 +922,8 @@
               itemtype="http://schema.org/Person"
             >
               <img
-                src="./asset/img/avatar témoignages/Cleseon.jpg"
-                alt="Cleason"
+                src="./asset/img/assets/Web-p/Cleseon.webp"
+                alt="Cleason - Développeur Back-end"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -925,7 +935,7 @@
               </div>
             </div>
           </div>
-
+          
           <!-- Duplicated Items for seamless loop -->
           <div class="testimonial-item" aria-hidden="true">
             <p class="testimonial-text">
@@ -942,8 +952,8 @@
             </div>
             <div class="testimonial-author">
               <img
-                src="./asset/img/avatar témoignages/Jean VLM.jpg"
-                alt="Jean-François VILM"
+                src="./asset/img/assets/Web-p/Jean VLM.webp"
+                alt="Jean-François VILM - Fondateur e-novateur Mentor"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -970,8 +980,8 @@
             </div>
             <div class="testimonial-author">
               <img
-                src="./asset/img/avatar témoignages/Marie.jpg"
-                alt="Marie"
+                src="./asset/img/assets/Web-p/Marie.jpg"
+                alt="Marie - Directrice Marketing"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -998,8 +1008,8 @@
             </div>
             <div class="testimonial-author">
               <img
-                src="./asset/img/avatar témoignages/Lucrce.jpg"
-                alt="Lucrece DOSSOU-YOVO"
+                src="./asset/img/assets/Web-p/Lucrce.webp"
+                alt="Lucrece DOSSOU-YOVO - Coach Business & Entrepreneure"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -1013,9 +1023,9 @@
           </div>
           <div class="testimonial-item" aria-hidden="true">
             <p class="testimonial-text">
-              “Je suis très content de notre collaboration avec Ibrahim. Il
-              écoute, comprend la vision et intègre chaque feedback jusqu’à la
-              version finale.”
+              "Je suis très content de notre collaboration avec Ibrahim. Il
+              écoute, comprend la vision et intègre chaque feedback jusqu'à la
+              version finale."
             </p>
             <div class="testimonial-rating">
               <i class="fas fa-star"></i>
@@ -1026,8 +1036,8 @@
             </div>
             <div class="testimonial-author">
               <img
-                src="./asset/img/avatar témoignages/Cleseon.jpg"
-                alt="Cleason"
+                src="./asset/img/assets/Web-p/Cleseon.webp"
+                alt="Cleason - Développeur Back-end"
                 class="author-avatar"
                 loading="lazy"
                 width="50"
@@ -1112,7 +1122,7 @@
               />
 
               <div class="select-wrapper">
-                <select class="nexa-select" name="besoin">
+                <select class="nexa-select" name="besoin" aria-label="Quel est votre besoin ?">
                   <option disabled selected>Quel est votre besoin ?</option>
                   <option>Création de Site Web</option>
                   <option>Audit & Stratégie de conversion</option>
@@ -1129,7 +1139,7 @@
                 rows="5"
               ></textarea>
 
-              <button class="nexa-btn" type="submit">LANCER MON PROJET</button>
+              <button class="nexa-btn" type="submit" aria-label="Envoyer le formulaire pour lancer votre projet">LANCER MON PROJET</button>
             </form>
           </div>
         </div>
