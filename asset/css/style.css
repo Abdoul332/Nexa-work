@@ -3903,43 +3903,26 @@
         /* Visual Section */
         .nexxa-hero-visual {
             position: relative;
-            max-width: 200px;
+            max-width: 300px;
             width: 100%;
             margin: 1rem auto 0;
-            padding: 0 1rem;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .nexxa-founder-card {
             background: rgba(0, 40, 85, 0.4);
             border-radius: 20px;
             padding: 1rem;
-            margin-left:4rem;
+            margin: 0 auto;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-        }
-
-        .nexxa-founder-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.05) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            transform: rotate(45deg);
-            z-index: 1;
-            pointer-events: none;
-            transition: all 0.6s ease;
-            opacity: 0.5;
         }
 
         .nexxa-founder-card:hover {
@@ -4244,9 +4227,10 @@
             }
             
             .nexxa-hero-visual {
-                margin-top: 2rem;
+                margin: 2rem auto 0;
                 max-width: 100%;
                 padding: 0;
+                text-align: center;
             }
         }
         
