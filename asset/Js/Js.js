@@ -464,34 +464,24 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.stat-card').forEach(card => statsObserver.observe(card));
     }
 
-    // ========== GESTION COOKIES RGPD COMPLÈTE ==========
+    // ========== GESTION COOKIES NEXA DESIGN ==========
     const cookieBanner = document.getElementById('cookie-banner');
-    const cookieModal = document.getElementById('cookie-modal');
-    const acceptAllButton = document.getElementById('accept-all-cookies');
-    const declineButton = document.getElementById('decline-cookies');
-    const customizeButton = document.getElementById('customize-cookies');
-    const closeModalButton = document.getElementById('close-modal');
-    const savePreferencesButton = document.getElementById('save-preferences');
-    const analyticsCheckbox = document.getElementById('analytics-cookies');
+    const acceptAllButton = document.getElementById('cookie-accept-all');
+    const refuseButton = document.getElementById('cookie-refuse');
     
-    const GA4_ID = 'G-57J8LJGQ1L';
     const COOKIE_KEY = 'cookie-consent';
-    const ANALYTICS_KEY = 'analytics-consent';
-    const CONSENT_DATE_KEY = 'cookie-consent-date';
     const CONSENT_DURATION_MS = 6 * 30 * 24 * 60 * 60 * 1000; // 6 mois
 
     // Fonctions utilitaires
-    const showElement = (element, className = 'show') => {
-        if (element) {
-            element.style.display = element === cookieBanner ? 'block' : 'flex';
-            requestAnimationFrame(() => element.classList.add(className));
+    const showCookieBanner = () => {
+        if (cookieBanner) {
+            requestAnimationFrame(() => cookieBanner.classList.add('show'));
         }
     };
 
-    const hideElement = (element, className = 'show', delay = 300) => {
-        if (element) {
-            element.classList.remove(className);
-            setTimeout(() => { element.style.display = 'none'; }, delay);
+    const hideCookieBanner = () => {
+        if (cookieBanner) {
+            cookieBanner.classList.remove('show');
         }
     };
 
@@ -508,12 +498,69 @@ document.addEventListener('DOMContentLoaded', function() {
         return null;
     };
 
-    const deleteCookie = (name, domain = '') => {
-        const domainStr = domain ? `domain=${domain};` : '';
-        document.cookie = `${name}=;${domainStr}path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+    // Vérifier le consentement
+    const checkConsent = () => {
+        const consent = getCookie(COOKIE_KEY);
+        const consentDate = getCookie('cookie-consent-date');
+        
+        if (consent && consentDate) {
+            const consentTime = new Date(consentDate).getTime();
+            const currentTime = Date.now();
+            const timeDiff = currentTime - consentTime;
+            
+            // Si le consentement a moins de 6 mois, ne pas afficher la bannière
+            if (timeDiff < CONSENT_DURATION_MS) {
+                return;
+            }
+        }
+        
+        // Afficher la bannière après un délai pour laisser l'utilisateur voir la page
+        setTimeout(showCookieBanner, 2000);
     };
 
-    // Chargement conditionnel de Google Analytics
+    // Accepter tous les cookies
+    const acceptAllCookies = () => {
+        setCookie(COOKIE_KEY, 'all', 365);
+        setCookie('cookie-consent-date', new Date().toISOString(), 365);
+        hideCookieBanner();
+        
+        // Charger Google Analytics si accepté
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+            });
+        }
+    };
+
+    // Refuser tous les cookies
+    const refuseCookies = () => {
+        setCookie(COOKIE_KEY, 'none', 365);
+        setCookie('cookie-consent-date', new Date().toISOString(), 365);
+        hideCookieBanner();
+    };
+
+    // Initialisation
+    const initCookieConsent = () => {
+        if (acceptAllButton) {
+            acceptAllButton.addEventListener('click', acceptAllCookies);
+        }
+        
+        if (refuseButton) {
+            refuseButton.addEventListener('click', refuseCookies);
+        }
+        
+        checkConsent();
+    };
+
+    // Lancer l'initialisation
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCookieConsent);
+    } else {
+        initCookieConsent();
+    }
     const loadGA4 = () => {
         if (document.getElementById('ga4-script')) return; // Évite le double chargement
         

@@ -277,23 +277,17 @@
     <div id="cookie-banner" class="cookie-banner">
       <div class="cookie-container">
         <div class="cookie-content">
-          <div class="cookie-icon">
-            <i class="fas fa-cookie-bite"></i>
-          </div>
           <div class="cookie-text">
             <h4>Respect de votre vie privée</h4>
-            <p>Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et personnaliser notre contenu. Vous pouvez choisir vos préférences ci-dessous.</p>
+            <p>Nous utilisons des cookies pour améliorer votre expérience.</p>
           </div>
         </div>
         <div class="cookie-buttons">
-          <button class="cookie-btn cookie-btn-secondary" id="cookie-settings">
-            <i class="fas fa-cog"></i> Personnaliser
-          </button>
-          <button class="cookie-btn cookie-btn-primary" id="cookie-accept-all">
-            Tout accepter
-          </button>
           <button class="cookie-btn cookie-btn-outline" id="cookie-refuse">
             Refuser
+          </button>
+          <button class="cookie-btn cookie-btn-primary" id="cookie-accept-all">
+            Accepter
           </button>
         </div>
       </div>
@@ -1777,7 +1771,7 @@
     </script>
     
     <!-- Overlay Menu Mobile Nexa -->
-    <div id="nexa-mobile-overlay" class="nexa-overlay">
+    <div id="nexa-mobile-overlay" class="nexa-overlay" inert>
         <nav class="nexa-nav">
             <ul class="nexa-nav-list">
                 <li><a href="#services">Services</a></li>
@@ -1801,17 +1795,17 @@
         if (nexaBurger && nexaOverlay) {
           // Ouvrir/fermer le menu
           nexaBurger.addEventListener('click', function() {
-            const isOpening = !nexaOverlay.classList.contains('active');
+            const isOpening = nexaOverlay.hasAttribute('inert');
             
             if (isOpening) {
-              // 1. D'abord afficher l'overlay et corriger aria-hidden
+              // 1. Retirer inert pour permettre l'interaction
+              nexaOverlay.removeAttribute('inert');
               nexaOverlay.classList.add('active');
-              nexaOverlay.setAttribute('aria-hidden', 'false');
               document.body.style.overflow = 'hidden';
               nexaBurger.classList.add('active');
               nexaBurger.setAttribute('aria-expanded', 'true');
               
-              // 2. Ensuite donner le focus au premier lien
+              // 2. Donner le focus au premier lien après un court délai
               setTimeout(() => {
                 const firstLink = nexaOverlay.querySelector('a');
                 if (firstLink) {
@@ -1820,8 +1814,8 @@
               }, 100);
             } else {
               // Fermeture du menu
+              nexaOverlay.setAttribute('inert', '');
               nexaOverlay.classList.remove('active');
-              nexaOverlay.setAttribute('aria-hidden', 'true');
               document.body.style.overflow = '';
               nexaBurger.classList.remove('active');
               nexaBurger.setAttribute('aria-expanded', 'false');
@@ -1832,8 +1826,8 @@
           // Fermer au clic sur les liens
           nexaLinks.forEach(link => {
             link.addEventListener('click', function() {
+              nexaOverlay.setAttribute('inert', '');
               nexaOverlay.classList.remove('active');
-              nexaOverlay.setAttribute('aria-hidden', 'true');
               document.body.style.overflow = '';
               nexaBurger.classList.remove('active');
               nexaBurger.setAttribute('aria-expanded', 'false');
@@ -1843,8 +1837,8 @@
           // Fermer au clic sur l'overlay (hors navigation)
           nexaOverlay.addEventListener('click', function(e) {
             if (e.target === nexaOverlay) {
+              nexaOverlay.setAttribute('inert', '');
               nexaOverlay.classList.remove('active');
-              nexaOverlay.setAttribute('aria-hidden', 'true');
               document.body.style.overflow = '';
               nexaBurger.classList.remove('active');
               nexaBurger.setAttribute('aria-expanded', 'false');
@@ -1855,8 +1849,8 @@
           // Fermer avec la touche Escape
           document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && nexaOverlay.classList.contains('active')) {
+              nexaOverlay.setAttribute('inert', '');
               nexaOverlay.classList.remove('active');
-              nexaOverlay.setAttribute('aria-hidden', 'true');
               document.body.style.overflow = '';
               nexaBurger.classList.remove('active');
               nexaBurger.setAttribute('aria-expanded', 'false');
