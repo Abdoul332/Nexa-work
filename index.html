@@ -208,23 +208,49 @@
             </li>
             <li class="nav-item">
               <a href="#contact" class="nav-link">Contact</a>
-                <a
-                  href="https://calendly.com/abdoulibrahim332/30min"
-                  class="nav-pill nav-pill--solid"
-                  >Réserver un call</a
-                >
-              </div>
+            </li>
+            <li class="nav-item">
+              <a
+                href="https://calendly.com/abdoulibrahim332/30min"
+                class="nav-pill nav-pill--solid"
+                >Réserver un call</a
+              >
             </li>
           </ul>
-          <button
-            class="mobile-menu-btn"
-            id="mobile-menu-btn"
-            aria-label="Menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
+          <!-- Bouton menu ultra-minimaliste -->
+          <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
+            <span class="menu-line"></span>
+            <span class="menu-line"></span>
           </button>
+          
+          <!-- Overlay du menu mobile -->
+          <div class="mobile-menu-overlay" id="mobile-menu-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+            <nav class="mobile-nav" role="navigation" aria-label="Menu principal">
+              <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                  <a href="#accueil" class="mobile-nav-link" data-text="Accueil">Accueil</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="#services" class="mobile-nav-link" data-text="Services">Services</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="#methodologie" class="mobile-nav-link" data-text="Méthodologie">Méthodologie</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="#portfolio" class="mobile-nav-link" data-text="Portfolio">Portfolio</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="#temoignages" class="mobile-nav-link" data-text="Témoignages">Témoignages</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="#contact" class="mobile-nav-link" data-text="Contact">Contact</a>
+                </li>
+                <li class="mobile-nav-item">
+                  <a href="https://calendly.com/abdoulibrahim332/30min" class="mobile-nav-link mobile-nav-cta" data-text="Réserver un call">Réserver un call</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </nav>
@@ -363,7 +389,7 @@
               data-aos-delay="400"
             >
               <a href="#contact" class="nexxa-btn nexxa-btn-primary" aria-label="Propulser votre impact avec Nexa Work">
-                <span>Propulser mon impact</span>
+                <span>Activer</span>
                 <svg
                   width="20"
                   height="20"
