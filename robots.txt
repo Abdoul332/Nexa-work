@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Autoriser les moteurs de recherche à accéder à tous les contenus
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bloquer l'accès aux fichiers temporaires et systèmes
+Disallow: /*.tmp$
+Disallow: /*.bak$
+Disallow: /.git/
+
+# Sitemap
+Sitemap: https://abdoul332.github.io/a-works/sitemap.xml
