@@ -145,7 +145,6 @@
     <meta name="theme-color" content="#001F3F" />
 
     <link rel="preload" href="./asset/img/assets/Web-p/Jean VLM.webp" as="image">
-    <link rel="preload" href="./asset/img/assets/Web-p/Marie.webp" as="image">
     <link rel="preload" href="./asset/img/assets/Web-p/Lucrce.webp" as="image">
     <link rel="preload" href="./asset/img/assets/Web-p/Cleseon.webp" as="image">
 
@@ -191,9 +190,7 @@
             />
           </a>
           <ul class="nav-menu" id="nav-menu">
-            <li class="nav-item">
-              <a href="#accueil" class="nav-link">Accueil</a>
-            </li>
+            
             <li class="nav-item">
               <a href="#services" class="nav-link">Services</a>
             </li>
@@ -211,12 +208,33 @@
             </li>
             <li class="nav-item">
               <a
+                href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous."
+                class="nav-pill nav-pill--outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fas fa-phone"></i>+227 91123080
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
                 href="https://calendly.com/abdoulibrahim332/30min"
                 class="nav-pill nav-pill--solid"
                 >Réserver un call</a
               >
             </li>
+
           </ul>
+          
+          <!-- Contrôles Mobile Nexa -->
+          <div class="nexa-mobile-controls">
+            <div id="nexa-burger" class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+          </div>
+          
           <!-- Bouton menu ultra-minimaliste -->
           <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
             <span class="menu-line"></span>
@@ -1755,6 +1773,97 @@
       // Initialiser le gestionnaire de cookies
       document.addEventListener('DOMContentLoaded', function() {
         new CookieConsent();
+      });
+    </script>
+    
+    <!-- Overlay Menu Mobile Nexa -->
+    <div id="nexa-mobile-overlay" class="nexa-overlay">
+        <nav class="nexa-nav">
+            <ul class="nexa-nav-list">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Méthodologie</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous." class="nexa-cta-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                <li><a href="https://calendly.com/abdoulibrahim332/30min" class="nexa-cta">Réserver un call</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- Script Menu Mobile Nexa -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const nexaBurger = document.getElementById('nexa-burger');
+        const nexaOverlay = document.getElementById('nexa-mobile-overlay');
+        const nexaLinks = nexaOverlay.querySelectorAll('a');
+        
+        if (nexaBurger && nexaOverlay) {
+          // Ouvrir/fermer le menu
+          nexaBurger.addEventListener('click', function() {
+            const isOpening = !nexaOverlay.classList.contains('active');
+            
+            if (isOpening) {
+              // 1. D'abord afficher l'overlay et corriger aria-hidden
+              nexaOverlay.classList.add('active');
+              nexaOverlay.setAttribute('aria-hidden', 'false');
+              document.body.style.overflow = 'hidden';
+              nexaBurger.classList.add('active');
+              nexaBurger.setAttribute('aria-expanded', 'true');
+              
+              // 2. Ensuite donner le focus au premier lien
+              setTimeout(() => {
+                const firstLink = nexaOverlay.querySelector('a');
+                if (firstLink) {
+                  firstLink.focus();
+                }
+              }, 100);
+            } else {
+              // Fermeture du menu
+              nexaOverlay.classList.remove('active');
+              nexaOverlay.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              nexaBurger.classList.remove('active');
+              nexaBurger.setAttribute('aria-expanded', 'false');
+              nexaBurger.focus();
+            }
+          });
+          
+          // Fermer au clic sur les liens
+          nexaLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              nexaOverlay.classList.remove('active');
+              nexaOverlay.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              nexaBurger.classList.remove('active');
+              nexaBurger.setAttribute('aria-expanded', 'false');
+            });
+          });
+          
+          // Fermer au clic sur l'overlay (hors navigation)
+          nexaOverlay.addEventListener('click', function(e) {
+            if (e.target === nexaOverlay) {
+              nexaOverlay.classList.remove('active');
+              nexaOverlay.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              nexaBurger.classList.remove('active');
+              nexaBurger.setAttribute('aria-expanded', 'false');
+              nexaBurger.focus();
+            }
+          });
+          
+          // Fermer avec la touche Escape
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nexaOverlay.classList.contains('active')) {
+              nexaOverlay.classList.remove('active');
+              nexaOverlay.setAttribute('aria-hidden', 'true');
+              document.body.style.overflow = '';
+              nexaBurger.classList.remove('active');
+              nexaBurger.setAttribute('aria-expanded', 'false');
+              nexaBurger.focus();
+            }
+          });
+        }
       });
     </script>
   </body>
