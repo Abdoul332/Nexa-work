@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.stat-card').forEach(card => statsObserver.observe(card));
     }
 
-    // ========== GESTION COOKIES NEXA DESIGN ==========
+    // ========== GESTION COOKIES NEXA DESIGN - VERSION 2.0 ==========
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptAllButton = document.getElementById('cookie-accept-all');
     const refuseButton = document.getElementById('cookie-refuse');
