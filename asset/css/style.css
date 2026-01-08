@@ -4121,6 +4121,11 @@
             color: #101010;
         }
 
+        .nexxa-btn-compact {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
         .nexxa-btn-ghost {
             background: transparent;
             color: var(--nexa-blue);
