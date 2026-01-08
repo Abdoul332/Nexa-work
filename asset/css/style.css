@@ -4845,34 +4845,37 @@ font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
 .nexa-nav-list a:hover {
 color: var(--nexa-yellow);
-transform: translateX(10px);
+transform: translateX(5px);
 }
 
 .nexa-cta {
     background: var(--nexa-yellow);
     color: var(--nexa-blue) !important;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.2rem;
     border-radius: 50px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
     display: inline-block;
+    text-decoration: none !important;
     transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-top: 1rem;
 }
 
 .nexa-cta-whatsapp {
     background: #25D366 !important;
     color: white !important;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.2rem;
     border-radius: 50px;
     font-weight: 600;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: 1rem;
     display: inline-block;
     transition: all 0.3s ease;
     text-decoration: none !important;
+    white-space: nowrap;
 }
 
 .nexa-cta-whatsapp i {

@@ -561,4 +561,269 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         initCookieConsent();
     }
+
+    // ----------- FORMULAIRE DE CONTACT INLINE -----------
+    // Fonction de traitement du formulaire (anciennement inline)
+    function traiterFormulaire(event) {
+        event.preventDefault();
+
+        // Récupérer le formulaire
+        const form = event.target.closest("form");
+
+        // Récupération des données
+        const nom = form.querySelector('input[name="nom"]').value;
+        const email = form.querySelector('input[name="email"]').value;
+        const telephone = form.querySelector('input[name="telephone"]').value;
+        const besoin = form.querySelector('select[name="besoin"]').value;
+        const projet = form.querySelector('textarea[name="projet"]').value;
+
+        // Validation
+        if (
+            !nom.trim() ||
+            !email.trim() ||
+            !telephone.trim() ||
+            !besoin ||
+            !projet.trim()
+        ) {
+            afficherMessage(
+                "Veuillez remplir tous les champs du formulaire.",
+                "error"
+            );
+            return false;
+        }
+
+        // Validation email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            afficherMessage("Veuillez entrer une adresse email valide.", "error");
+            return false;
+        }
+
+        // Validation téléphone
+        const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+        if (!phoneRegex.test(telephone) || telephone.length < 8) {
+            afficherMessage(
+                "Veuillez entrer un numéro de téléphone valide.",
+                "error"
+            );
+            return false;
+        }
+
+        afficherMessage("Envoi en cours...", "info");
+
+        // Paramètres EmailJS avec vos vrais IDs
+        const templateParams = {
+            nom: nom,
+            email: email,
+            telephone: telephone,
+            besoin: besoin,
+            projet: projet,
+            date: new Date().toLocaleString("fr-FR"),
+            from_email: "nexawork332@gmail.com",
+            to_email: "nexawork332@gmail.com",
+        };
+
+        console.log("Envoi avec les paramètres:", templateParams);
+
+        // Envoi via EmailJS
+        emailjs
+            .send("service_tljx75k", "template_4akj5k9", templateParams)
+            .then(
+                function (response) {
+                    console.log("SUCCESS!", response.status, response.text);
+                    afficherMessage(
+                        "✅ Message envoyé avec succès ! Nous vous répondrons dans les 24h.",
+                        "success"
+                    );
+                    form.reset();
+                },
+                function (error) {
+                    console.log("FAILED...", error);
+                    afficherMessage(
+                        "❌ Erreur lors de l'envoi: " + JSON.stringify(error),
+                        "error"
+                    );
+                }
+            );
+
+        return false;
+    }
+
+    // Fonction d'affichage des messages (anciennement inline)
+    function afficherMessage(message, type = "info") {
+        // Supprimer les messages existants
+        const messagesExistants = document.querySelectorAll(".form-message");
+        messagesExistants.forEach((msg) => msg.remove());
+
+        // Créer le message
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "form-message";
+        messageDiv.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-weight: 500;
+        z-index: 10000;
+        max-width: 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transform: translateX(400px);
+        transition: transform 0.3s ease;
+        font-family: 'Inter', sans-serif;
+    `;
+
+        // Couleur selon type
+        switch (type) {
+            case "success":
+                messageDiv.style.background =
+                    "linear-gradient(135deg, #10b981, #059669)";
+                messageDiv.style.color = "white";
+                break;
+            case "error":
+                messageDiv.style.background =
+                    "linear-gradient(135deg, #ef4444, #dc2626)";
+                messageDiv.style.color = "white";
+                break;
+            default:
+                messageDiv.style.background =
+                    "linear-gradient(135deg, #00438B, #003366)";
+                messageDiv.style.color = "white";
+        }
+
+        messageDiv.textContent = message;
+        document.body.appendChild(messageDiv);
+
+        // Animation
+        setTimeout(() => {
+            messageDiv.style.transform = "translateX(0)";
+        }, 100);
+
+        // Auto-suppression
+        setTimeout(() => {
+            messageDiv.style.transform = "translateX(400px)";
+            setTimeout(() => {
+                if (messageDiv.parentNode) {
+                    messageDiv.parentNode.removeChild(messageDiv);
+                }
+            }, 300);
+        }, 5000);
+    }
+
+    // ----------- AOS INITIALIZATION -----------
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: "ease-out-cubic",
+        });
+    }
+
+    // ----------- PORTFOLIO FILTER -----------
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const portfolioCards = document.querySelectorAll(".portfolio-card");
+
+    if (filterButtons.length > 0 && portfolioCards.length > 0) {
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", function () {
+                // Remove active class from all buttons
+                filterButtons.forEach((btn) => btn.classList.remove("active"));
+                // Add active class to clicked button
+                this.classList.add("active");
+
+                const filterValue = this.getAttribute("data-filter");
+
+                portfolioCards.forEach((card) => {
+                    const categories = card.getAttribute("data-category").split(" ");
+
+                    if (filterValue === "all" || categories.includes(filterValue)) {
+                        card.style.display = "block";
+                        // Add fade-in animation
+                        setTimeout(() => {
+                            card.style.opacity = "1";
+                            card.style.transform = "scale(1)";
+                        }, 100);
+                    } else {
+                        card.style.opacity = "0";
+                        card.style.transform = "scale(0.8)";
+                        setTimeout(() => {
+                            card.style.display = "none";
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+
+    // ----------- MENU MOBILE NEXA -----------
+    const nexaBurger = document.getElementById('nexa-burger');
+    const nexaOverlay = document.getElementById('nexa-mobile-overlay');
+    const nexaLinks = nexaOverlay ? nexaOverlay.querySelectorAll('a') : [];
+    
+    if (nexaBurger && nexaOverlay) {
+        // Ouvrir/fermer le menu
+        nexaBurger.addEventListener('click', function() {
+            const isOpening = nexaOverlay.hasAttribute('inert');
+            
+            if (isOpening) {
+                // 1. Retirer inert pour permettre l'interaction
+                nexaOverlay.removeAttribute('inert');
+                nexaOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                nexaBurger.classList.add('active');
+                nexaBurger.setAttribute('aria-expanded', 'true');
+                
+                // 2. Donner le focus au premier lien après un court délai
+                setTimeout(() => {
+                    const firstLink = nexaOverlay.querySelector('a');
+                    if (firstLink) {
+                        firstLink.focus();
+                    }
+                }, 100);
+            } else {
+                // Fermeture du menu
+                nexaOverlay.setAttribute('inert', '');
+                nexaOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                nexaBurger.classList.remove('active');
+                nexaBurger.setAttribute('aria-expanded', 'false');
+                nexaBurger.focus();
+            }
+        });
+        
+        // Fermer au clic sur les liens
+        nexaLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                nexaOverlay.setAttribute('inert', '');
+                nexaOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                nexaBurger.classList.remove('active');
+                nexaBurger.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Fermer au clic sur l'overlay (hors navigation)
+        nexaOverlay.addEventListener('click', function(e) {
+            if (e.target === nexaOverlay) {
+                nexaOverlay.setAttribute('inert', '');
+                nexaOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                nexaBurger.classList.remove('active');
+                nexaBurger.setAttribute('aria-expanded', 'false');
+                nexaBurger.focus();
+            }
+        });
+        
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && nexaOverlay.classList.contains('active')) {
+                nexaOverlay.setAttribute('inert', '');
+                nexaOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                nexaBurger.classList.remove('active');
+                nexaBurger.setAttribute('aria-expanded', 'false');
+                nexaBurger.focus();
+            }
+        });
+    }
 });

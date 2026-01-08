@@ -130,6 +130,13 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Preconnect pour les performances -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://unpkg.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -205,7 +212,7 @@
               <a href="#process" class="nav-link">Méthodologie</a>
             </li>
             <li class="nav-item">
-              <a href="#contact" class="nav-link">Contact</a>
+              <a href="#contact" class="nav-link">Contactez-nous</a>
             </li>
             <li class="nav-item">
               <a
@@ -214,14 +221,14 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <i class="fas fa-phone"></i>+227 91123080
+                <i class="fas fa-phone"></i>Expert en ligne
               </a>
             </li>
             <li class="nav-item">
               <a
                 href="https://calendly.com/abdoulibrahim332/30min"
                 class="nav-pill nav-pill--solid"
-                >Réserver un call</a
+                >Prendre RDV</a
               >
             </li>
 
@@ -245,29 +252,8 @@
           <!-- Overlay du menu mobile -->
           <div class="mobile-menu-overlay" id="mobile-menu-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
             <nav class="mobile-nav" role="navigation" aria-label="Menu principal">
-              <ul class="mobile-nav-list">
-                <li class="mobile-nav-item">
-                  <a href="#accueil" class="mobile-nav-link" data-text="Accueil">Accueil</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="#services" class="mobile-nav-link" data-text="Services">Services</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="#methodologie" class="mobile-nav-link" data-text="Méthodologie">Méthodologie</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="#portfolio" class="mobile-nav-link" data-text="Portfolio">Portfolio</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="#temoignages" class="mobile-nav-link" data-text="Témoignages">Témoignages</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="#contact" class="mobile-nav-link" data-text="Contact">Contact</a>
-                </li>
-                <li class="mobile-nav-item">
-                  <a href="https://calendly.com/abdoulibrahim332/30min" class="mobile-nav-link mobile-nav-cta" data-text="Réserver un call">Réserver un call</a>
-                </li>
-              </ul>
+              
+              
             </nav>
           </div>
         </div>
@@ -402,7 +388,8 @@
               data-aos-delay="400"
             >
               <a href="#contact" class="nexxa-btn nexxa-btn-primary" aria-label="Propulser votre impact avec Nexa Work">
-                <span>Activer</span>
+                <span>Contactez-nous
+</span>
                 <svg
                   width="20"
                   height="20"
@@ -1286,159 +1273,14 @@
                 rows="5"
               ></textarea>
 
-              <button class="nexa-btn" type="submit" aria-label="Envoyer le formulaire pour lancer votre projet">LANCER MON PROJET</button>
+              <button class="nexa-btn" type="submit" aria-label="Envoyer le formulaire pour lancer votre projet">ENVOYER MA DEMANDE</button>
             </form>
           </div>
         </div>
       </div>
     </section>
 
-    <script>
-      function traiterFormulaire(event) {
-        event.preventDefault();
-
-        // Récupérer le formulaire
-        const form = event.target.closest("form");
-
-        // Récupération des données
-        const nom = form.querySelector('input[name="nom"]').value;
-        const email = form.querySelector('input[name="email"]').value;
-        const telephone = form.querySelector('input[name="telephone"]').value;
-        const besoin = form.querySelector('select[name="besoin"]').value;
-        const projet = form.querySelector('textarea[name="projet"]').value;
-
-        // Validation
-        if (
-          !nom.trim() ||
-          !email.trim() ||
-          !telephone.trim() ||
-          !besoin ||
-          !projet.trim()
-        ) {
-          afficherMessage(
-            "Veuillez remplir tous les champs du formulaire.",
-            "error"
-          );
-          return false;
-        }
-
-        // Validation email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          afficherMessage("Veuillez entrer une adresse email valide.", "error");
-          return false;
-        }
-
-        // Validation téléphone
-        const phoneRegex = /^[\d\s\+\-\(\)]+$/;
-        if (!phoneRegex.test(telephone) || telephone.length < 8) {
-          afficherMessage(
-            "Veuillez entrer un numéro de téléphone valide.",
-            "error"
-          );
-          return false;
-        }
-
-        afficherMessage("Envoi en cours...", "info");
-
-        // Paramètres EmailJS avec vos vrais IDs
-        const templateParams = {
-          nom: nom,
-          email: email,
-          telephone: telephone,
-          besoin: besoin,
-          projet: projet,
-          date: new Date().toLocaleString("fr-FR"),
-          from_email: "nexawork332@gmail.com",
-          to_email: "nexawork332@gmail.com",
-        };
-
-        console.log("Envoi avec les paramètres:", templateParams);
-
-        // Envoi via EmailJS
-        emailjs
-          .send("service_tljx75k", "template_4akj5k9", templateParams)
-          .then(
-            function (response) {
-              console.log("SUCCESS!", response.status, response.text);
-              afficherMessage(
-                "✅ Message envoyé avec succès ! Nous vous répondrons dans les 24h.",
-                "success"
-              );
-              form.reset();
-            },
-            function (error) {
-              console.log("FAILED...", error);
-              afficherMessage(
-                "❌ Erreur lors de l'envoi: " + JSON.stringify(error),
-                "error"
-              );
-            }
-          );
-
-        return false;
-      }
-
-      function afficherMessage(message, type = "info") {
-        // Supprimer les messages existants
-        const messagesExistants = document.querySelectorAll(".form-message");
-        messagesExistants.forEach((msg) => msg.remove());
-
-        // Créer le message
-        const messageDiv = document.createElement("div");
-        messageDiv.className = "form-message";
-        messageDiv.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 8px;
-        font-weight: 500;
-        z-index: 10000;
-        max-width: 300px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        transform: translateX(400px);
-        transition: transform 0.3s ease;
-        font-family: 'Inter', sans-serif;
-    `;
-
-        // Couleur selon type
-        switch (type) {
-          case "success":
-            messageDiv.style.background =
-              "linear-gradient(135deg, #10b981, #059669)";
-            messageDiv.style.color = "white";
-            break;
-          case "error":
-            messageDiv.style.background =
-              "linear-gradient(135deg, #ef4444, #dc2626)";
-            messageDiv.style.color = "white";
-            break;
-          default:
-            messageDiv.style.background =
-              "linear-gradient(135deg, #00438B, #003366)";
-            messageDiv.style.color = "white";
-        }
-
-        messageDiv.textContent = message;
-        document.body.appendChild(messageDiv);
-
-        // Animation
-        setTimeout(() => {
-          messageDiv.style.transform = "translateX(0)";
-        }, 100);
-
-        // Auto-suppression
-        setTimeout(() => {
-          messageDiv.style.transform = "translateX(400px)";
-          setTimeout(() => {
-            if (messageDiv.parentNode) {
-              messageDiv.parentNode.removeChild(messageDiv);
-            }
-          }, 300);
-        }, 5000);
-      }
-    </script>
+    <!-- Contact Form Script - Déplacé vers Js.js -->
     <!-- Footer -->
     <footer class="footer">
       <div class="container">
@@ -1511,265 +1353,10 @@
 
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
 
-    <!-- Portfolio Filter Script -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize AOS
-        AOS.init({
-          duration: 800,
-          once: true,
-          easing: "ease-out-cubic",
-        });
-
-        // Portfolio Filter Functionality
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const portfolioCards = document.querySelectorAll(".portfolio-card");
-
-        filterButtons.forEach((button) => {
-          button.addEventListener("click", function () {
-            // Remove active class from all buttons
-            filterButtons.forEach((btn) => btn.classList.remove("active"));
-            // Add active class to clicked button
-            this.classList.add("active");
-
-            const filterValue = this.getAttribute("data-filter");
-
-            portfolioCards.forEach((card) => {
-              const categories = card.getAttribute("data-category").split(" ");
-
-              if (filterValue === "all" || categories.includes(filterValue)) {
-                card.style.display = "block";
-                // Add fade-in animation
-                setTimeout(() => {
-                  card.style.opacity = "1";
-                  card.style.transform = "scale(1)";
-                }, 100);
-              } else {
-                card.style.opacity = "0";
-                card.style.transform = "scale(0.8)";
-                setTimeout(() => {
-                  card.style.display = "none";
-                }, 300);
-              }
-            });
-          });
-        });
-      });
-
-      // ===== COOKIE CONSENT MANAGEMENT =====
-      class CookieConsent {
-        constructor() {
-          this.banner = document.getElementById('cookie-banner');
-          this.modal = document.getElementById('cookie-modal');
-          this.settingsBtn = document.getElementById('cookie-settings');
-          this.acceptAllBtn = document.getElementById('cookie-accept-all');
-          this.refuseBtn = document.getElementById('cookie-refuse');
-          this.saveBtn = document.getElementById('cookie-save-preferences');
-          this.closeBtn = document.getElementById('cookie-modal-close');
-          
-          this.analyticsCheckbox = document.getElementById('analytics-cookies');
-          this.marketingCheckbox = document.getElementById('marketing-cookies');
-          
-          this.init();
-        }
-        
-        init() {
-          // Vérifier si le consentement a déjà été donné
-          if (!this.getCookie('nexa_cookie_consent')) {
-            this.showBanner();
-          } else {
-            this.applyConsent();
-          }
-          
-          // Event listeners
-          this.settingsBtn?.addEventListener('click', () => this.showModal());
-          this.acceptAllBtn?.addEventListener('click', () => this.acceptAll());
-          this.refuseBtn?.addEventListener('click', () => this.refuseAll());
-          this.saveBtn?.addEventListener('click', () => this.savePreferences());
-          this.closeBtn?.addEventListener('click', () => this.hideModal());
-          
-          // Cliquer en dehors de la modal pour fermer
-          this.modal?.addEventListener('click', (e) => {
-            if (e.target === this.modal) {
-              this.hideModal();
-            }
-          });
-        }
-        
-        showBanner() {
-          setTimeout(() => {
-            this.banner?.classList.add('show');
-          }, 1000);
-        }
-        
-        hideBanner() {
-          this.banner?.classList.remove('show');
-        }
-        
-        showModal() {
-          this.modal?.classList.add('show');
-          this.loadPreferences();
-        }
-        
-        hideModal() {
-          this.modal?.classList.remove('show');
-        }
-        
-        acceptAll() {
-          this.setCookie('nexa_cookie_consent', 'all', 365);
-          this.setCookie('nexa_analytics', 'true', 365);
-          this.setCookie('nexa_marketing', 'true', 365);
-          this.hideBanner();
-          this.hideModal();
-          this.applyConsent();
-          this.showNotification('Votre consentement a été enregistré. Merci !');
-        }
-        
-        refuseAll() {
-          this.setCookie('nexa_cookie_consent', 'essential', 365);
-          this.setCookie('nexa_analytics', 'false', 365);
-          this.setCookie('nexa_marketing', 'false', 365);
-          this.hideBanner();
-          this.hideModal();
-          this.applyConsent();
-          this.showNotification('Seuls les cookies essentiels sont activés.');
-        }
-        
-        savePreferences() {
-          const analytics = this.analyticsCheckbox?.checked || false;
-          const marketing = this.marketingCheckbox?.checked || false;
-          
-          let consentType = 'essential';
-          if (analytics && marketing) {
-            consentType = 'all';
-          } else if (analytics) {
-            consentType = 'analytics';
-          }
-          
-          this.setCookie('nexa_cookie_consent', consentType, 365);
-          this.setCookie('nexa_analytics', analytics.toString(), 365);
-          this.setCookie('nexa_marketing', marketing.toString(), 365);
-          
-          this.hideBanner();
-          this.hideModal();
-          this.applyConsent();
-          this.showNotification('Vos préférences ont été enregistrées.');
-        }
-        
-        loadPreferences() {
-          const analytics = this.getCookie('nexa_analytics') === 'true';
-          const marketing = this.getCookie('nexa_marketing') === 'true';
-          
-          if (this.analyticsCheckbox) this.analyticsCheckbox.checked = analytics;
-          if (this.marketingCheckbox) this.marketingCheckbox.checked = marketing;
-        }
-        
-        applyConsent() {
-          const consent = this.getCookie('nexa_cookie_consent');
-          const analytics = this.getCookie('nexa_analytics') === 'true';
-          
-          // Gérer Google Analytics selon le consentement
-          if (analytics && consent !== 'essential') {
-            this.enableAnalytics();
-          } else {
-            this.disableAnalytics();
-          }
-          
-          // Gérer Google Tag Manager selon le consentement
-          if (consent === 'all') {
-            this.enableGTM();
-          } else {
-            this.disableGTM();
-          }
-        }
-        
-        enableAnalytics() {
-          // Google Analytics déjà chargé, on active le tracking
-          if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-              'analytics_storage': 'granted'
-            });
-          }
-        }
-        
-        disableAnalytics() {
-          // Désactiver le tracking analytics
-          if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-              'analytics_storage': 'denied'
-            });
-          }
-        }
-        
-        enableGTM() {
-          // GTM déjà configuré, on peut activer des tags supplémentaires
-          console.log('GTM fully enabled');
-        }
-        
-        disableGTM() {
-          // Limiter GTM aux tags essentiels seulement
-          console.log('GTM limited to essential tags');
-        }
-        
-        showNotification(message) {
-          // Créer une notification temporaire
-          const notification = document.createElement('div');
-          notification.className = 'cookie-notification';
-          notification.textContent = message;
-          notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--nexa-blue);
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            z-index: 10002;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-          `;
-          
-          document.body.appendChild(notification);
-          
-          setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-          }, 100);
-          
-          setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-              document.body.removeChild(notification);
-            }, 300);
-          }, 3000);
-        }
-        
-        setCookie(name, value, days) {
-          const date = new Date();
-          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-          const expires = "expires=" + date.toUTCString();
-          document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
-        }
-        
-        getCookie(name) {
-          const nameEQ = name + "=";
-          const ca = document.cookie.split(';');
-          for(let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-          }
-          return null;
-        }
-      }
-      
-      // Initialiser le gestionnaire de cookies
-      document.addEventListener('DOMContentLoaded', function() {
-        new CookieConsent();
-      });
-    </script>
+    <!-- Portfolio Filter Script - Déplacé vers Js.js -->
+    <!-- Cookie Consent Management - Déplacé vers Js.js -->
     
     <!-- Overlay Menu Mobile Nexa -->
     <div id="nexa-mobile-overlay" class="nexa-overlay" inert>
@@ -1780,86 +1367,11 @@
                 <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous." class="nexa-cta-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
-                <li><a href="https://calendly.com/abdoulibrahim332/30min" class="nexa-cta">Réserver un call</a></li>
+                <li><a href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous." class="nexa-cta-whatsapp"><i class="fab fa-whatsapp"></i> Expert en ligne</a></li>
+                <li><a href="https://calendly.com/abdoulibrahim332/30min" class="nexa-cta">Prendre RDV</a></li>
             </ul>
         </nav>
     </div>
     
-    <!-- Script Menu Mobile Nexa -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const nexaBurger = document.getElementById('nexa-burger');
-        const nexaOverlay = document.getElementById('nexa-mobile-overlay');
-        const nexaLinks = nexaOverlay.querySelectorAll('a');
-        
-        if (nexaBurger && nexaOverlay) {
-          // Ouvrir/fermer le menu
-          nexaBurger.addEventListener('click', function() {
-            const isOpening = nexaOverlay.hasAttribute('inert');
-            
-            if (isOpening) {
-              // 1. Retirer inert pour permettre l'interaction
-              nexaOverlay.removeAttribute('inert');
-              nexaOverlay.classList.add('active');
-              document.body.style.overflow = 'hidden';
-              nexaBurger.classList.add('active');
-              nexaBurger.setAttribute('aria-expanded', 'true');
-              
-              // 2. Donner le focus au premier lien après un court délai
-              setTimeout(() => {
-                const firstLink = nexaOverlay.querySelector('a');
-                if (firstLink) {
-                  firstLink.focus();
-                }
-              }, 100);
-            } else {
-              // Fermeture du menu
-              nexaOverlay.setAttribute('inert', '');
-              nexaOverlay.classList.remove('active');
-              document.body.style.overflow = '';
-              nexaBurger.classList.remove('active');
-              nexaBurger.setAttribute('aria-expanded', 'false');
-              nexaBurger.focus();
-            }
-          });
-          
-          // Fermer au clic sur les liens
-          nexaLinks.forEach(link => {
-            link.addEventListener('click', function() {
-              nexaOverlay.setAttribute('inert', '');
-              nexaOverlay.classList.remove('active');
-              document.body.style.overflow = '';
-              nexaBurger.classList.remove('active');
-              nexaBurger.setAttribute('aria-expanded', 'false');
-            });
-          });
-          
-          // Fermer au clic sur l'overlay (hors navigation)
-          nexaOverlay.addEventListener('click', function(e) {
-            if (e.target === nexaOverlay) {
-              nexaOverlay.setAttribute('inert', '');
-              nexaOverlay.classList.remove('active');
-              document.body.style.overflow = '';
-              nexaBurger.classList.remove('active');
-              nexaBurger.setAttribute('aria-expanded', 'false');
-              nexaBurger.focus();
-            }
-          });
-          
-          // Fermer avec la touche Escape
-          document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nexaOverlay.classList.contains('active')) {
-              nexaOverlay.setAttribute('inert', '');
-              nexaOverlay.classList.remove('active');
-              document.body.style.overflow = '';
-              nexaBurger.classList.remove('active');
-              nexaBurger.setAttribute('aria-expanded', 'false');
-              nexaBurger.focus();
-            }
-          });
-        }
-      });
-    </script>
-  </body>
+      </body>
 </html>
