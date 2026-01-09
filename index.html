@@ -2,15 +2,20 @@
 <html lang="fr">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4HPYEKRW9B"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4HPYEKRW9B"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-4HPYEKRW9B');
+      gtag("config", "G-4HPYEKRW9B");
     </script>
-    
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -18,11 +23,18 @@
      GOOGLE TAG MANAGER
     ========================= -->
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NT4TMRDH');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-NT4TMRDH");
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- =========================
@@ -130,7 +142,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
+
     <!-- Preconnect pour les performances -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
@@ -151,9 +163,21 @@
     <link rel="icon" type="image/png" href="./asset/img/Profil.png" />
     <meta name="theme-color" content="#001F3F" />
 
-    <link rel="preload" href="./asset/img/assets/Web-p/Jean VLM.webp" as="image">
-    <link rel="preload" href="./asset/img/assets/Web-p/Lucrce.webp" as="image">
-    <link rel="preload" href="./asset/img/assets/Web-p/Cleseon.webp" as="image">
+    <link
+      rel="preload"
+      href="./asset/img/assets/Web-p/Jean VLM.webp"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./asset/img/assets/Web-p/Lucrce.webp"
+      as="image"
+    />
+    <link
+      rel="preload"
+      href="./asset/img/assets/Web-p/Cleseon.webp"
+      as="image"
+    />
 
     <link rel="stylesheet" href="./asset/css/style.css" />
     <!-- EmailJS pour envoi d'emails directs -->
@@ -162,12 +186,15 @@
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
       defer
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      defer
+    ></script>
     <script src="./asset/Js/Js.js" defer></script>
     <script>
       // Configuration EmailJS avec votre clé publique
-      window.addEventListener('DOMContentLoaded', function() {
-        if (typeof emailjs !== 'undefined') {
+      window.addEventListener("DOMContentLoaded", function () {
+        if (typeof emailjs !== "undefined") {
           emailjs.init("LAXCbuG7pf_tAUYCp"); // Votre clé publique
         }
       });
@@ -176,10 +203,16 @@
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT4TMRDH"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-NT4TMRDH"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="container">
@@ -197,11 +230,10 @@
             />
           </a>
           <ul class="nav-menu" id="nav-menu">
-            
             <li class="nav-item">
               <a href="#services" class="nav-link">Services</a>
             </li>
-            
+
             <li class="nav-item">
               <a href="#portfolio" class="nav-link">Portfolio</a>
             </li>
@@ -212,7 +244,7 @@
               <a href="#process" class="nav-link">Méthodologie</a>
             </li>
             <li class="nav-item">
-              <a href="#contact" class="nav-link">Contactez-nous</a>
+              <a href="#contact" class="portfolio-action-cta-1 nav-link">Contactez-nous</a>
             </li>
             <li class="nav-item">
               <a
@@ -231,30 +263,43 @@
                 >Prendre RDV</a
               >
             </li>
-
           </ul>
-          
+
           <!-- Contrôles Mobile Nexa -->
           <div class="nexa-mobile-controls">
             <div id="nexa-burger" class="burger-icon">
-                <span></span>
-                <span></span>
-                <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
           </div>
-          
+
           <!-- Bouton menu ultra-minimaliste -->
-          <button class="menu-toggle" id="mobile-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu-overlay">
+          <button
+            class="menu-toggle"
+            id="mobile-menu-btn"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu-overlay"
+          >
             <span class="menu-line"></span>
             <span class="menu-line"></span>
           </button>
-          
+
           <!-- Overlay du menu mobile -->
-          <div class="mobile-menu-overlay" id="mobile-menu-overlay" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
-            <nav class="mobile-nav" role="navigation" aria-label="Menu principal">
-              
-              
-            </nav>
+          <div
+            class="mobile-menu-overlay"
+            id="mobile-menu-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <nav
+              class="mobile-nav"
+              role="navigation"
+              aria-label="Menu principal"
+            ></nav>
           </div>
         </div>
       </div>
@@ -297,12 +342,17 @@
                 <p>Nécessaires au fonctionnement du site</p>
               </div>
               <div class="cookie-toggle">
-                <input type="checkbox" id="essential-cookies" checked disabled>
+                <input
+                  type="checkbox"
+                  id="essential-cookies"
+                  checked
+                  disabled
+                />
                 <label for="essential-cookies"></label>
               </div>
             </div>
           </div>
-          
+
           <div class="cookie-category">
             <div class="cookie-category-header">
               <div class="cookie-category-info">
@@ -310,12 +360,12 @@
                 <p>Nous aident à comprendre comment vous utilisez notre site</p>
               </div>
               <div class="cookie-toggle">
-                <input type="checkbox" id="analytics-cookies">
+                <input type="checkbox" id="analytics-cookies" />
                 <label for="analytics-cookies"></label>
               </div>
             </div>
           </div>
-          
+
           <div class="cookie-category">
             <div class="cookie-category-header">
               <div class="cookie-category-info">
@@ -323,14 +373,17 @@
                 <p>Utilisés pour personnaliser les publicités</p>
               </div>
               <div class="cookie-toggle">
-                <input type="checkbox" id="marketing-cookies">
+                <input type="checkbox" id="marketing-cookies" />
                 <label for="marketing-cookies"></label>
               </div>
             </div>
           </div>
         </div>
         <div class="cookie-modal-footer">
-          <button class="cookie-btn cookie-btn-outline" id="cookie-save-preferences">
+          <button
+            class="cookie-btn cookie-btn-outline"
+            id="cookie-save-preferences"
+          >
             Enregistrer mes préférences
           </button>
         </div>
@@ -379,7 +432,8 @@
               data-aos="fade-up"
               data-aos-delay="300"
             >
-             Nexa Work conçoit des infrastructures web de prestige où la puissance visuelle rencontre la stratégie de conversion.
+              Nexa Work conçoit des infrastructures web de prestige où la
+              puissance visuelle rencontre la stratégie de conversion.
             </p>
 
             <div
@@ -387,7 +441,11 @@
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <a href="#contact" class="nexxa-btn nexxa-btn-primary nexxa-btn-compact" aria-label="Propulser votre impact avec Nexa Work">
+              <a
+                href="#contact"
+                class="nexxa-btn nexxa-btn-primary nexxa-btn-compact"
+                aria-label="Propulser votre impact avec Nexa Work"
+              >
                 <span>Contactez-nous</span>
                 <svg
                   width="20"
@@ -442,7 +500,6 @@
                 <div class="nexxa-metric-card nexxa-metric-primary">
                   <p class="nexxa-metric-label">Conversion Business</p>
                   <h3 class="nexxa-metric-value">ROI Garanti</h3>
-                  
                 </div>
               </div>
             </div>
@@ -485,7 +542,7 @@
               <li>Optimisation SEO one page</li>
               <li>Tunnels de conversion intégrés</li>
             </ul>
-            <a href="#contact" class="service-link">Choisir ce pack →</a>
+            <a href="#contact" class="portfolio-action-cta-1 service-link">Choisir ce pack →</a>
           </div>
 
           <!-- Offre 2 : Branding Pilot -->
@@ -494,14 +551,15 @@
             <div class="service-icon"><i class="fab fa-linkedin"></i></div>
             <h3 class="service-title">Le Branding Pilot</h3>
             <p class="service-description">
-              L'optimisation visuelle et d'autorité : Bannière premium, photo de profil pro, et "Carrousels Signature" pour asseoir votre autorité.
+              L'optimisation visuelle et d'autorité : Bannière premium, photo de
+              profil pro, et "Carrousels Signature" pour asseoir votre autorité.
             </p>
             <ul class="service-features">
               <li>Bannière premium & Photo de profil pro</li>
               <li>Carrousels Signature d'autorité</li>
               <li>Optimisation visuelle complète</li>
             </ul>
-            <a href="#contact" class="service-link">Choisir ce pack →</a>
+            <a href="#contact" class="portfolio-action-cta-1 service-link">Choisir ce pack →</a>
           </div>
 
           <!-- Offre 3 : Authority System -->
@@ -510,14 +568,15 @@
             <div class="service-icon"><i class="fas fa-crown"></i></div>
             <h3 class="service-title">L'Authority System</h3>
             <p class="service-description">
-              Le combo ultime : Site Web + Identité Visuelle complète (Logo, Charte, Branding LinkedIn). C'est l'offre Prestige.
+              Le combo ultime : Site Web + Identité Visuelle complète (Logo,
+              Charte, Branding LinkedIn). C'est l'offre Prestige.
             </p>
             <ul class="service-features">
               <li>Pack Site + Identité Visuelle complète</li>
               <li>Logo & Charte graphique sur-mesure</li>
               <li>Branding LinkedIn premium</li>
             </ul>
-            <a href="#contact" class="service-link premium-link"
+            <a href="#contact" class="portfolio-action-cta-1 service-link premium-link"
               >Choisir ce pack →</a
             >
           </div>
@@ -537,7 +596,8 @@
           </div>
           <h2 class="section-title">Réalisations & Impact</h2>
           <p class="section-subtitle">
-            Découvrez comment nous fusionnons prestige visuel et performance pour transformer votre crédibilité en résultats.
+            Découvrez comment nous fusionnons prestige visuel et performance
+            pour transformer votre crédibilité en résultats.
           </p>
         </div>
         <div class="portfolio-filters">
@@ -566,24 +626,31 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">
-                Lucrece — Coach finance &amp; bien-être
-              </h3>
-              <p class="portfolio-description">
-                One Page premium avec storytelling visuel d'élite et tunnels de conversion optimisés pour un impact maximal.
-              </p>
-              <div class="portfolio-kpi">
-                <span>+35 % conversions en 2 mois</span>
-                <span>SEO On-page optimisé</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">
+                  Lucrece — Coach finance &amp; bien-être
+                </h3>
+                <p class="portfolio-description">
+                  One Page premium avec storytelling visuel d'élite et tunnels
+                  de conversion optimisés pour un impact maximal.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>+35 % conversions en 2 mois</span>
+                  <span>SEO On-page optimisé</span>
+                </div>
               </div>
 
               <div class="portfolio-actions">
-                <a href="https://financezenpro.com/" target="_blank" class="portfolio-link">
-                  <i class="fas fa-external-link-alt"></i> Voir le projet
-                </a>
-                <a href="#contact" class="portfolio-cta"
-                  >Obtenir cet impact →</a
+                <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                  >Obtenir cet impact</a
                 >
+                <a
+                  href="https://financezenpro.com/"
+                  target="_blank"
+                  class="portfolio-link"
+                >
+                  Plus de détail<i class="fas fa-external-link-alt"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -603,23 +670,29 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Magazine d'entreprise</h3>
-              <p class="portfolio-description">
-                Plateforme éditoriale pour générer du trafic organique et capter
-                des leads.
-              </p>
-              <div class="portfolio-kpi">
-                <span>Temps de chargement &lt; 0,9 s</span>
-                <span>Architecture SEO-friendly</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">Magazine d'entreprise</h3>
+                <p class="portfolio-description">
+                  Plateforme éditoriale pour générer du trafic organique et
+                  capter des leads.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>Temps de chargement &lt; 0,9 s</span>
+                  <span>Architecture SEO-friendly</span>
+                </div>
               </div>
 
               <div class="portfolio-actions">
-                <a href="./Projets/Infotech/index.html" target="_blank" class="portfolio-link">
-                  <i class="fas fa-external-link-alt"></i> Voir le projet
-                </a>
-                <a href="#contact" class="portfolio-cta"
-                  >Obtenir cet impact →</a
+                <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                  >Obtenir cet impact</a
                 >
+                <a
+                  href="./Projets/Infotech/index.html"
+                  target="_blank"
+                  class="portfolio-link"
+                >
+                  Plus de détail<i class="fas fa-external-link-alt"></i>
+                </a>
               </div>
             </div>
           </div>
@@ -639,22 +712,32 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Zayn Market — Plateforme E-commerce</h3>
-              <p class="portfolio-description">
-                Boutique en ligne complète avec panier, paiement sécurisé et gestion des stocks.
-              </p>
-              <div class="portfolio-kpi">
-                <span>+250 commandes / mois</span>
-                <span>Taux conversion: 3.2%</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">
+                  Zayn Market — Plateforme E-commerce
+                </h3>
+                <p class="portfolio-description">
+                  Boutique en ligne complète avec panier, paiement sécurisé et
+                  gestion des stocks.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>+250 commandes / mois</span>
+                  <span>Taux conversion: 3.2%</span>
+                </div>
               </div>
-
               <div class="portfolio-actions">
-                <a href="https://zaynmarket.vercel.app/" target="_blank" class="portfolio-link">
-                  <i class="fas fa-external-link-alt"></i> Voir le projet
-                </a>
-                <a href="#contact" class="portfolio-cta"
-                  >Obtenir cet impact →</a
-                >
+                <div class="portfolio-actions">
+                  <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                    >Obtenir cet impact</a
+                  >
+                  <a
+                    href="https://zaynmarket.vercel.app/"
+                    target="_blank"
+                    class="portfolio-link"
+                  >
+                    Plus de détail<i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -668,27 +751,29 @@
                 loading="lazy"
                 width="400"
                 height="220"
-                style="object-fit: contain; object-position: center top;"
+                style="object-fit: contain; object-position: center top"
               />
               <div class="portfolio-overlay">
                 <div class="overlay-content">Autorité Visuelle</div>
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">
-                Autorité Visuelle LinkedIn — Prestige & Impact
-              </h3>
-              <p class="portfolio-description">
-                Architecture de prestige LinkedIn avec force de frappe visuelle et optimisation de l'autorité professionnelle.
-              </p>
-              <div class="portfolio-kpi">
-                <span>Prestige de profil élevé</span>
-                <span>Autorité visuelle : +85%</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">
+                  Autorité Visuelle LinkedIn — Prestige & Impact
+                </h3>
+                <p class="portfolio-description">
+                  Architecture de prestige LinkedIn avec force de frappe
+                  visuelle et optimisation de l'autorité professionnelle.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>Prestige de profil élevé</span>
+                  <span>Autorité visuelle : +85%</span>
+                </div>
               </div>
-              
               <div class="portfolio-actions">
-                <a href="#contact" class="portfolio-cta"
-                  >Obtenir cet impact →</a
+                <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                  >Obtenir cet impact</a
                 >
               </div>
             </div>
@@ -709,21 +794,23 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">
-                Identité Visuelle & Branding Pilot
-              </h3>
-              <p class="portfolio-description">
-                Conception d'une charte graphique haute performance pour aligner
-                la crédibilité visuelle avec les objectifs de conversion.
-              </p>
-              <div class="portfolio-kpi">
-                <span>Cohérence Multi-canal</span>
-                <span>Design Psychologique</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">
+                  Identité Visuelle & Branding Pilot
+                </h3>
+                <p class="portfolio-description">
+                  Conception d'une charte graphique haute performance pour
+                  aligner la crédibilité visuelle avec les objectifs de
+                  conversion.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>Cohérence Multi-canal</span>
+                  <span>Design Psychologique</span>
+                </div>
               </div>
-
               <div class="portfolio-actions">
-                <a href="#contact" class="portfolio-cta"
-                  >Obtenir cet impact →</a
+                <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                  >Obtenir cet impact</a
                 >
               </div>
             </div>
@@ -744,19 +831,22 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Identité Visuelle Premium</h3>
-              <p class="portfolio-description">
-                Création d'une identité visuelle complète et impactante pour des
-                marques ambitieuses, incluant logo, charte graphique et supports
-                de communication.
-              </p>
-              <div class="portfolio-kpi">
-                <span>+40% de reconnaissance de marque</span>
-                <span>Cohérence visuelle optimale</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">Identité Visuelle Premium</h3>
+                <p class="portfolio-description">
+                  Création d'une identité visuelle complète et impactante pour
+                  des marques ambitieuses, incluant logo, charte graphique et
+                  supports de communication.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>+40% de reconnaissance de marque</span>
+                  <span>Cohérence visuelle optimale</span>
+                </div>
               </div>
-
               <div class="portfolio-actions">
-                <a href="#contact" class="portfolio-cta">Obtenir cet impact →</a>
+                <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                  >Obtenir cet impact</a
+                >
               </div>
             </div>
           </div>
@@ -776,17 +866,18 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Trafic &amp; visibilité</h3>
-              <p class="portfolio-description">
-                Pilotage SEO technique + contenu pour un site B2B.
-              </p>
-              <div class="portfolio-kpi">
-                <span>De 33 à 64 clics / 28 jours</span>
-                <span>De la 35ᵉ à la 1ʳᵉ position</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">Trafic &amp; visibilité</h3>
+                <p class="portfolio-description">
+                  Pilotage SEO technique + contenu pour un site B2B.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>De 33 à 64 clics / 28 jours</span>
+                  <span>De la 35ᵉ à la 1ʳᵉ position</span>
+                </div>
               </div>
-
-              <a href="#contact" class="portfolio-cta"
-                >Obtenir cet impact →</a
+              <a href="#contact" class="portfolio-action-cta-1 nav-pill nav-pill--solid"
+                >Obtenir cet impact</a
               >
             </div>
           </div>
@@ -806,18 +897,19 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Performance PageSpeed</h3>
-              <p class="portfolio-description">
-                Optimisation profonde du code et des assets pour dépasser 90/100
-                sur mobile.
-              </p>
-              <div class="portfolio-kpi">
-                <span>Mobile 93 /100</span>
-                <span>Desktop 100 /100</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">Performance PageSpeed</h3>
+                <p class="portfolio-description">
+                  Optimisation profonde du code et des assets pour dépasser
+                  90/100 sur mobile.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>Mobile 93 /100</span>
+                  <span>Desktop 100 /100</span>
+                </div>
               </div>
-
-              <a href="#contact" class="portfolio-cta"
-                >Obtenir cet impact →</a
+              <a href="#contact" class="portfolio-action-cta-1 nav-pill"
+                >Obtenir cet impact</a
               >
             </div>
           </div>
@@ -837,18 +929,19 @@
               </div>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Résultats Analytics</h3>
-              <p class="portfolio-description">
-                Stratégie contenu + tracking pour suivre la croissance et les
-                conversions.
-              </p>
-              <div class="portfolio-kpi">
-                <span>+80 % trafic organique</span>
-                <span>Audience internationale</span>
+              <div class="portfolio-text-content">
+                <h3 class="portfolio-title">Résultats Analytics</h3>
+                <p class="portfolio-description">
+                  Stratégie contenu + tracking pour suivre la croissance et les
+                  conversions.
+                </p>
+                <div class="portfolio-kpi">
+                  <span>+80 % trafic organique</span>
+                  <span>Audience internationale</span>
+                </div>
               </div>
-
-              <a href="#contact" class="portfolio-cta"
-                >Obtenir cet impact →</a
+              <a href="#contact" class="portfolio-action-cta-1 nav-pill"
+                >Obtenir cet impact</a
               >
             </div>
           </div>
@@ -925,9 +1018,13 @@
             itemscope
             itemtype="http://schema.org/Review"
           >
-            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Organization">
-              <meta itemprop="name" content="Nexa Work">
-              <meta itemprop="url" content="https://nexa-work.com/">
+            <div
+              itemprop="itemReviewed"
+              itemscope
+              itemtype="http://schema.org/Organization"
+            >
+              <meta itemprop="name" content="Nexa Work" />
+              <meta itemprop="url" content="https://nexa-work.com/" />
             </div>
             <p class="testimonial-text" itemprop="reviewBody">
               "Ibrahim est un développeur consciencieux et rigoureux. Sa
@@ -966,9 +1063,13 @@
             itemscope
             itemtype="http://schema.org/Review"
           >
-            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Organization">
-              <meta itemprop="name" content="Nexa Work">
-              <meta itemprop="url" content="https://nexa-work.com/">
+            <div
+              itemprop="itemReviewed"
+              itemscope
+              itemtype="http://schema.org/Organization"
+            >
+              <meta itemprop="name" content="Nexa Work" />
+              <meta itemprop="url" content="https://nexa-work.com/" />
             </div>
             <p class="testimonial-text" itemprop="reviewBody">
               "L'optimisation SEO menée par Ibrahim a boosté notre visibilité.
@@ -1007,9 +1108,13 @@
             itemscope
             itemtype="http://schema.org/Review"
           >
-            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Organization">
-              <meta itemprop="name" content="Nexa Work">
-              <meta itemprop="url" content="https://nexa-work.com/">
+            <div
+              itemprop="itemReviewed"
+              itemscope
+              itemtype="http://schema.org/Organization"
+            >
+              <meta itemprop="name" content="Nexa Work" />
+              <meta itemprop="url" content="https://nexa-work.com/" />
             </div>
             <p class="testimonial-text" itemprop="reviewBody">
               "Site moderne, fluide et fidèle à mon activité. J'ai apprécié son
@@ -1048,9 +1153,13 @@
             itemscope
             itemtype="http://schema.org/Review"
           >
-            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Organization">
-              <meta itemprop="name" content="Nexa Work">
-              <meta itemprop="url" content="https://nexa-work.com/">
+            <div
+              itemprop="itemReviewed"
+              itemscope
+              itemtype="http://schema.org/Organization"
+            >
+              <meta itemprop="name" content="Nexa Work" />
+              <meta itemprop="url" content="https://nexa-work.com/" />
             </div>
             <p class="testimonial-text" itemprop="reviewBody">
               “Je suis très content de notre collaboration avec Ibrahim. Il
@@ -1084,7 +1193,7 @@
               </div>
             </div>
           </div>
-          
+
           <!-- Duplicated Items for seamless loop -->
           <div class="testimonial-item" aria-hidden="true">
             <p class="testimonial-text">
@@ -1202,7 +1311,6 @@
       </div>
     </section>
 
-    
     <section id="contact">
       <div class="contact-container">
         <div class="contact-header">
@@ -1271,7 +1379,11 @@
               />
 
               <div class="select-wrapper">
-                <select class="nexa-select" name="besoin" aria-label="Quel est votre besoin ?">
+                <select
+                  class="nexa-select"
+                  name="besoin"
+                  aria-label="Quel est votre besoin ?"
+                >
                   <option disabled selected>Quel est votre besoin ?</option>
                   <option>Création de Site Web</option>
                   <option>Audit & Stratégie de conversion</option>
@@ -1288,7 +1400,13 @@
                 rows="5"
               ></textarea>
 
-              <button class="nexa-btn" type="submit" aria-label="Envoyer le formulaire pour lancer votre projet">ENVOYER MA DEMANDE</button>
+              <button
+                class="nexa-btn"
+                type="submit"
+                aria-label="Envoyer le formulaire pour lancer votre projet"
+              >
+                ENVOYER MA DEMANDE
+              </button>
             </form>
           </div>
         </div>
@@ -1372,21 +1490,32 @@
 
     <!-- Portfolio Filter Script - Déplacé vers Js.js -->
     <!-- Cookie Consent Management - Déplacé vers Js.js -->
-    
+
     <!-- Overlay Menu Mobile Nexa -->
     <div id="nexa-mobile-overlay" class="nexa-overlay" inert>
-        <nav class="nexa-nav">
-            <ul class="nexa-nav-list">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#process">Méthodologie</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#testimonials">Témoignages</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous." class="nexa-cta-whatsapp"><i class="fab fa-whatsapp"></i> Expert en ligne</a></li>
-                <li><a href="https://calendly.com/abdoulibrahim332/30min" class="nexa-cta">Prendre RDV</a></li>
-            </ul>
-        </nav>
+      <nav class="nexa-nav">
+        <ul class="nexa-nav-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Méthodologie</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Témoignages</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a
+              href="https://wa.me/22791123080?text=Bonjour%20Nexa%20Work,%20je%20souhaite%20discuter%20d'un%20projet%20web%20avec%20vous."
+              class="nexa-cta-whatsapp"
+              ><i class="fab fa-whatsapp"></i> Expert en ligne</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://calendly.com/abdoulibrahim332/30min"
+              class="nexa-cta"
+              >Prendre RDV</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
-    
-      </body>
+  </body>
 </html>
