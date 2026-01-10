@@ -39,11 +39,11 @@
     <!-- =========================
      META SEO - NEXA WORK
     ========================= -->
-    <title>Nexa Work | Stratégie LinkedIn & Sites Web - Conversion +35%</title>
+    <title>Nexa Work | Studio Branding & Stratégie Site Web</title>
     <!-- Vérification Google -->
     <meta
       name="description"
-      content="Nexa Work : Stratégie LinkedIn experte et sites web performants. +35% de taux de conversion, acquisition clients automatisée."
+      content="Studio d'architecture digitale en zone francophone. Nous fusionnons puissance visuelle et stratégie de site web performante. ROI garanti : +35%. Et si votre site devenait votre meilleur commercial ?"
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Nexa Work - Ibrahim Ali Abdoulahi" />
@@ -147,8 +147,8 @@
     />
 
     <!-- Favicon Nexa Work -->
-    <link rel="icon" type="image/x-icon" href="./asset/img/favicon.ico" />
-    <link rel="icon" type="image/png" href="./asset/img/Profil.png" />
+    <link rel="icon" type="image/x-icon" href="./asset/img/assets/favicon.ico" />
+    <link rel="icon" type="image/png" href="./asset/img/assets/Profil.png" />
     <meta name="theme-color" content="#001F3F" />
 
     <link rel="preload" href="./asset/img/assets/Web-p/Jean VLM.webp" as="image">
@@ -170,6 +170,24 @@
         if (typeof emailjs !== 'undefined') {
           emailjs.init("LAXCbuG7pf_tAUYCp"); // Votre clé publique
         }
+      });
+    </script>
+    
+    <!-- Protection contre clic droit -->
+    <script>
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
       });
     </script>
   </head>
@@ -358,8 +376,8 @@
                   <span class="nexxa-stat-label">Perf</span>
                 </div>
                 <div class="nexxa-stat-item">
-                  <span class="nexxa-stat-number">24/7</span>
-                  <span class="nexxa-stat-label">Support</span>
+                  <span class="nexxa-stat-number">24h</24h></span>
+                  <span class="nexxa-stat-label">Réponse</span>
                 </div>
               </div>
             </div>
@@ -614,7 +632,7 @@
               </div>
 
               <div class="portfolio-actions">
-                <a href="./Projets/Infotech/index.html" target="_blank" class="portfolio-link">
+                <a href="/infotech/" target="_blank" class="portfolio-link">
                   <i class="fas fa-external-link-alt"></i> Voir le projet
                 </a>
                 <a href="#contact" class="portfolio-cta"
@@ -1275,7 +1293,7 @@
                   <option disabled selected>Quel est votre besoin ?</option>
                   <option>Création de Site Web</option>
                   <option>Audit & Stratégie de conversion</option>
-                  <option>Optimisation complète du profil LinkedIn</option>
+                  <option>Optimisation visuelle et autorité LinkedIn</option>
                   <option>Autre demande</option>
                 </select>
                 <div class="select-arrow">▼</div>
@@ -1312,7 +1330,7 @@
             <a href="https://github.com/Abdoul332" class="footer-link"
               >Github</a
             >
-            <a href="Mentions_legales.html" class="footer-link"
+            <a href="/mentions-legales/" class="footer-link"
               >Mentions légales</a
             >
           </div>
