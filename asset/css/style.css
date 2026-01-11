@@ -2139,6 +2139,34 @@ section {
   transform: rotate(1deg) scale(1.05);
 }
 
+/* Animation dynamique pour badge PRESTIGE */
+.service-card.premium .prestige-dynamic {
+  animation: prestigeDynamic 1.2s ease-in-out infinite;
+}
+
+@keyframes prestigeDynamic {
+  0%, 100% {
+    background: linear-gradient(135deg, #0b227b, #05587b);
+    box-shadow: 0 3px 12px rgba(49, 53, 111, 0.3);
+    transform: rotate(1deg) scale(1.05);
+  }
+  25% {
+    background: linear-gradient(135deg, #1a3a8a, #0a6b8a);
+    box-shadow: 0 5px 15px rgba(49, 53, 111, 0.4);
+    transform: rotate(2deg) scale(1.05);
+  }
+  50% {
+    background: linear-gradient(135deg, #d4af37, #b8941f);
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.5);
+    transform: rotate(0deg) scale(1.05);
+  }
+  75% {
+    background: linear-gradient(135deg, #1a3a8a, #0a6b8a);
+    box-shadow: 0 5px 15px rgba(49, 53, 111, 0.4);
+    transform: rotate(-1deg) scale(1.05);
+  }
+}
+
 .service-title {
   font-size: 1.1rem;
   font-weight: 600;

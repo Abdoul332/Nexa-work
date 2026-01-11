@@ -214,6 +214,24 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <!-- Protection contre clic droit -->
+    <script>
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    </script>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="container">
@@ -528,7 +546,33 @@
           </p>
         </div>
         <div class="services-grid">
-          <!-- Offre 1 : Impact One -->
+          <!-- Offre 1 : Branding Pilot (moins chère) -->
+          <div class="service-card premium">
+            <div class="service-badge premium-badge"> PREMIUM</div>
+            <div class="service-icon"><i class="fab fa-linkedin"></i></div>
+            <h3 class="service-title">Le Branding Pilot</h3>
+            <p class="service-description">
+              L'optimisation visuelle et d'autorité : Bannière premium, photo de
+              profil pro, et "Carrousels Signature" pour asseoir votre autorité.
+            </p>
+            <ul class="service-features">
+              <li>Bannière premium & Photo de profil pro</li>
+              <li>Carrousels Signature d'autorité</li>
+              <li>Optimisation visuelle complète</li>
+              <li>Audit de positionnement inclus</li>
+            </ul>
+            <div class="service-pricing">
+              <div class="price-amount">350€ TTC</div>
+              <div class="price-period">ou 2x 175€</div>
+            </div>
+            <div class="portfolio-actions">
+              <a href="#contact" class="portfolio-action-cta-1 ">
+                Démarrer mon Projet →</a
+              >
+            </div>
+          </div>
+
+          <!-- Offre 2 : Impact One (milieu - prix moyen) -->
           <div class="service-card premium">
             <div class="service-badge premium-badge">taux de 35%</div>
             <div class="service-icon"><i class="fas fa-globe"></i></div>
@@ -549,41 +593,15 @@
               <div class="price-period">ou 2x 350€</div>
             </div>
             <div class="portfolio-actions">
-              <a href="#contact" class="portfolio-action-cta-1 ">
-                Démarrer mon Projet →</a
-              >
-            </div>
-          </div>
-
-          <!-- Offre 2 : Branding Pilot -->
-          <div class="service-card premium">
-            <div class="service-badge premium-badge"> PREMIUM</div>
-            <div class="service-icon"><i class="fab fa-linkedin"></i></div>
-            <h3 class="service-title">Le Branding Pilot</h3>
-            <p class="service-description">
-              L'optimisation visuelle et d'autorité : Bannière premium, photo de
-              profil pro, et "Carrousels Signature" pour asseoir votre autorité.
-            </p>
-            <ul class="service-features">
-              <li>Bannière premium & Photo de profil pro</li>
-              <li>Carrousels Signature d'autorité</li>
-              <li>Optimisation visuelle complète</li>
-              <li>Audit de positionnement inclus</li>
-            </ul>
-            <div class="service-pricing">
-              <div class="price-amount">350€ TTC</div>
-              <div class="price-period">ou 2x 175€</div>
-            </div>
-            <div class="portfolio-actions">
               <a href="#contact" class="portfolio-action-cta-1 popular-choice">
                 Démarrer mon Projet →</a
               >
             </div>
           </div>
 
-          <!-- Offre 3 : Authority System -->
+          <!-- Offre 3 : Authority System (plus chère) -->
           <div class="service-card premium">
-            <div class="service-badge premium-badge">PRESTIGE</div>
+            <div class="service-badge premium-badge prestige-dynamic">PRESTIGE</div>
             <div class="service-icon"><i class="fas fa-crown"></i></div>
             <h3 class="service-title">L'Authority System</h3>
             <p class="service-description">
