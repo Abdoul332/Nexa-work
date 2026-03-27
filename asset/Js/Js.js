@@ -656,4 +656,63 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // ----------- ANIMATION PROCESS SECTION GSAP -----------
+    if (hasGSAP) {
+        // Animation de la ligne de connexion entre les étapes du processus
+        const processSection = document.querySelector('.process-section');
+        const processTimeline = document.querySelector('.process-timeline');
+        const processLine = processTimeline ? processTimeline.querySelector('::before') : null;
+
+        if (processSection && processTimeline) {
+            // Créer un élément de ligne animé avec GSAP
+            const connectionLine = document.createElement('div');
+            connectionLine.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 10%;
+                right: 10%;
+                height: 2px;
+                background: linear-gradient(90deg, var(--nexa-blue), var(--nexa-yellow), var(--nexa-blue));
+                transform: scaleX(0);
+                transform-origin: left center;
+                z-index: 1;
+                transition: all 0.3s ease;
+            `;
+            
+            // Insérer la ligne dans la timeline
+            processTimeline.style.position = 'relative';
+            processTimeline.insertBefore(connectionLine, processTimeline.firstChild);
+
+            // Animation au scroll avec ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+            
+            ScrollTrigger.create({
+                trigger: processSection,
+                start: "top 70%",
+                end: "bottom 30%",
+                onEnter: () => {
+                    gsap.to(connectionLine, {
+                        scaleX: 1,
+                        duration: 1.5,
+                        ease: "power2.out"
+                    });
+                },
+                onLeave: () => {
+                    gsap.to(connectionLine, {
+                        scaleX: 0,
+                        duration: 0.8,
+                        ease: "power2.in"
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to(connectionLine, {
+                        scaleX: 1,
+                        duration: 1.5,
+                        ease: "power2.out"
+                    });
+                }
+            });
+        }
+    }
 });
