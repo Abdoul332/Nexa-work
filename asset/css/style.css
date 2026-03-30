@@ -2396,15 +2396,15 @@ section {
 
 /* Animations désynchronisées */
 .row-web .portfolio-marquee-content {
-  animation: portfolioScrollRight 40s linear infinite;
+  animation: portfolioScrollRight 60s linear infinite;
 }
 
 .row-seo .portfolio-marquee-content {
-  animation: portfolioScrollLeft 45s linear infinite; /* Sens inverse */
+  animation: portfolioScrollLeft 70s linear infinite; /* Sens inverse */
 }
 
 .row-branding .portfolio-marquee-content {
-  animation: portfolioScrollRight 50s linear infinite; /* Vitesse différente */
+  animation: portfolioScrollRight 60s linear infinite; /* Vitesse différente */
 }
 
 .portfolio-marquee-row:hover .portfolio-marquee-content {
@@ -2503,12 +2503,21 @@ section {
 
 @media (max-width: 768px) {
   .portfolio-card {
-    width: 350px; /* Plus grand sur mobile */
-    height: 250px;
+    width: 320px; /* Dimensions optimisées pour mobile */
+    height: 240px;
+    border-radius: 15px; /* Look moderne App-like */
   }
   .portfolio-marquee-container {
     -webkit-mask-image: none;
     mask-image: none;
+  }
+  .portfolio-marquee-content {
+    gap: 1.2rem; /* Espacement fixe pour mobile */
+  }
+  /* Feedback tactile au clic */
+  .portfolio-card:active {
+    transform: scale(0.96);
+    transition: 0.1s;
   }
 }
 
@@ -4927,8 +4936,8 @@ section {
   }
 
   .nexxa-founder-avatar {
-    width: 60px;
-    height: 60px;
+    width: 100px; /* Encore plus grand pour visibilité maximale */
+    height: 100px; /* Encore plus grand pour visibilité maximale */
     margin-bottom: 0.25rem;
   }
 
