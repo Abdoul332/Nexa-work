@@ -183,9 +183,51 @@ document.addEventListener('DOMContentLoaded', function() {
         updateNavbar(); // Appel initial
     }
 
+    // ----------- SECTION BADGE ANIMATION (LIQUIDE & PREMIUM) -----------
+    const animateSectionBadge = (badge) => {
+        if (!hasGSAP || !badge) return;
+        
+        const text = badge.querySelector('span');
+        const tl = gsap.timeline();
+        
+        // Reset initial states
+        gsap.set(badge, { scaleX: 0, transformOrigin: 'left center' });
+        if (text) gsap.set(text, { y: 20, opacity: 0 });
+        
+        // Animation du fond jaune (Liquide)
+        tl.to(badge, { 
+            scaleX: 1, 
+            duration: 1, 
+            ease: 'expo.out',
+            force3D: true 
+        })
+        // Animation du texte (Rebond subtil)
+        .to(text, { 
+            y: 0, 
+            opacity: 1, 
+            duration: 1.2, 
+            ease: 'back.out(1.7)',
+            force3D: true
+        }, '-=0.8');
+    };
+
     // ----------- INTERSECTION OBSERVER ANIMATIONS -----------
     if ('IntersectionObserver' in window) {
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        
+        // Observer pour les badges (animation spécifique)
+        const badgeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSectionBadge(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-badge').forEach(el => badgeObserver.observe(el));
+
+        // Observer général pour le reste
         const animateObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -195,7 +237,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }, observerOptions);
 
-        document.querySelectorAll('.section-header, .service-card, .value-card, .process-step').forEach(el => animateObserver.observe(el));
+        document.querySelectorAll('.section-header, .service-card, .value-card, .process-step').forEach(el => {
+            if (!el.classList.contains('section-badge')) {
+                animateObserver.observe(el);
+            }
+        });
     }
 
 
@@ -210,13 +256,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (hasGSAP) {
                 const tl = gsap.timeline({ defaults: { duration: 0.8, ease: 'power3.out' } });
                 if (headerEls.length) {
-                    tl.from(headerEls, { y: 45, opacity: 0, filter: 'blur(8px)', stagger: 0.12 });
+                    tl.from(headerEls, { y: 20, opacity: 0, stagger: 0.12 });
                 }
                 if (contactItems.length) {
-                    tl.from(contactItems, { y: 60, opacity: 0, scale: 0.9, filter: 'blur(6px)', stagger: 0.12 }, '-=0.3');
+                    tl.from(contactItems, { y: 20, opacity: 0, scale: 0.9, stagger: 0.12 }, '-=0.3');
                 }
                 if (contactButtons.length) {
-                    tl.from(contactButtons, { y: 50, opacity: 0, scale: 0.92, filter: 'blur(6px)', stagger: 0.08 }, '-=0.25');
+                    tl.from(contactButtons, { y: 20, opacity: 0, scale: 0.92, stagger: 0.08 }, '-=0.25');
                 }
 
                 const floatingIcons = contactSection.querySelectorAll('.contact-icon');
@@ -262,12 +308,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             gsap.fromTo(contactCTA,
-                { y: -80, opacity: 0, scale: 0.85, filter: 'blur(10px)' },
+                { y: 20, opacity: 0, scale: 0.85 },
                 {
                     y: 0,
                     opacity: 1,
                     scale: 1,
-                    filter: 'blur(0px)',
                     duration: 1.2,
                     ease: 'power4.out',
                     delay: 0.2

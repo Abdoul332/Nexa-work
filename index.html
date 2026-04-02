@@ -223,8 +223,8 @@
 
     <!-- Protection contre clic droit -->
     <script>
-      document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
+      document.addEventListener('contextmenu', function() {
+        e.preventDefault(e);
         return false;
       });
 
@@ -498,12 +498,12 @@
               <div class="nexxa-founder-header">
                 <img
                   src="./asset/img/assets/Web-p/Profil img (1).webp"
-                  alt="Ibrahim Ali Abdoulahi - Fondateur Nexa Work"
+                  alt="Ibrahim Ali Abdoulahi - Fondateur Nexa Work & Expert Stratégie Digitale"
                   class="nexxa-founder-avatar"
                   fetchpriority="high"
                 />
                 <div>
-                  <h4 class="nexxa-founder-name">Ibrahim Ali </h4>
+                  <span class="nexxa-founder-name">Ibrahim Ali </span>
                   <p class="nexxa-founder-role">
                     Spécialiste de Conversion Web | CEO @Nexa Work
                   </p>
@@ -512,11 +512,11 @@
               <div class="nexxa-founder-header">
                 <img
                   src="./asset/img/Web-p/aboubacar-sms.webp"
-                  alt="Aboubacar S. M.S - Expert UI/UX Design et Développement React"
+                  alt="Aboubacar S. M.S - Expert UI/UX Design et Développement Web Premium"
                   class="nexxa-founder-avatar"
                 />
                 <div>
-                  <h4 class="nexxa-founder-name">Aboubacar S. M.S</h4>
+                  <span class="nexxa-founder-name">Aboubacar S. M.S</span>
                   <p class="nexxa-founder-role">
                  Développeur React &  Designer
                   </p>
@@ -543,7 +543,7 @@
             class="section-badge"
             style="background: #ffb700; color: #001f3f"
           >
-            Nos Solutions types
+            <span>Nos Solutions types</span>
           </div>
           <h2 class="section-title">
             Solutions clés en main pour votre croissance digitale
@@ -642,7 +642,7 @@
             class="section-badge"
             style="background: #ffb700; color: #001f3f"
           >
-            Processus
+            <span>Processus</span>
           </div>
           <h2 class="section-title">Méthodologie aprouvée</h2>
           <p class="section-subtitle">
@@ -686,7 +686,7 @@
             class="section-badge"
             style="background: #ffb700; color: #001f3f"
           >
-            Portfolio
+            <span>Portfolio</span>
           </div>
           <h2 class="section-title">Réalisations & Impact</h2>
           <p class="section-subtitle">
@@ -697,12 +697,12 @@
         <div class="portfolio-marquee-container">
           <!-- Ligne 1 : Web Architecture -->
           <div class="portfolio-marquee-row row-web">
-            <h4 class="portfolio-row-label">Web Architecture</h4>
+            <span class="portfolio-row-label">Web Architecture</span>
             <div class="portfolio-marquee-content">
               <!-- Projet 1 -->
               <div class="portfolio-card">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/Lucrece makup.webp" alt="Lucrece — Finance" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/Lucrece makup.webp" alt="Interface Web Haute Conversion - Finance Zen Pro par Nexa Work" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">One Page premium avec storytelling</h3>
@@ -715,7 +715,7 @@
               <!-- Projet 2 -->
               <div class="portfolio-card">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/Infotech makup.webp" alt="Magazine Business" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/Infotech makup.webp" alt="Plateforme Digitale Éditoriale - Magazine Business Premium" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Plateforme éditoriale</h3>
@@ -729,7 +729,7 @@
               <!-- Duplication -->
               <div class="portfolio-card" aria-hidden="true">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/Zayn.webp" alt="" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/Zayn.webp" alt="E-commerce Haute Performance - Boutique en ligne Optimisée" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Plateforme E-commerce</h3>
@@ -741,7 +741,7 @@
               </div>
               <div class="portfolio-card" aria-hidden="true">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/Lucrece makup.webp" alt="" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/Lucrece makup.webp" alt="Architecture Web Stratégique - Design de Prestige" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">One Page premium avec storytelling</h3>
@@ -757,12 +757,12 @@
 
           <!-- Ligne 2 : SEO Authority -->
           <div class="portfolio-marquee-row row-seo">
-            <h4 class="portfolio-row-label">SEO Authority</h4>
+            <span class="portfolio-row-label">SEO Authority</span>
             <div class="portfolio-marquee-content">
               <!-- Projet 1 -->
               <div class="portfolio-card">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/DURER ENGAGEMENT (1).webp" alt="SEO Authority" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/DURER ENGAGEMENT (1).webp" alt="Stratégie SEO Authority - Optimisation Trafic Organique & Conversion" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">SEO Authority</h3>
@@ -775,7 +775,7 @@
               <!-- Projet 2 -->
               <div class="portfolio-card">
                 <div class="portfolio-image">
-                  <img src="asset/img/assets/Web-p/seo-console.webp" alt="Audit Technique" loading="lazy" />
+                  <img src="asset/img/assets/Web-p/seo-console.webp" alt="Audit SEO Technique - Pilotage de Performance B2B" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Pilotage SEO + contenu pour un site B2B.</h3>
@@ -788,7 +788,7 @@
               <!-- Duplication -->
               <div class="portfolio-card" aria-hidden="true">
                 <div class="portfolio-image">
-                  <img src="./asset/img/assets/Web-p/pagespeed-performance.webp" alt="" loading="lazy" />
+                  <img src="./asset/img/assets/Web-p/pagespeed-performance.webp" alt="Optimisation PageSpeed - Performance Web Maximale 100/100" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Optimisation profonde du site web</h3>
@@ -800,7 +800,7 @@
               </div>
               <div class="portfolio-card" aria-hidden="true">
                 <div class="portfolio-image">
-                  <img src="asset/img/assets/Web-p/DURER ENGAGEMENT (1).webp" alt="" loading="lazy" />
+                  <img src="asset/img/assets/Web-p/DURER ENGAGEMENT (1).webp" alt="Acquisition Audience Internationale - SEO Multi-continentale" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Stratégie d'acquisition et de rétention d'audience internationale</h3>
@@ -821,12 +821,12 @@ KPI 3 : 140 sessions qualifiées</p>
 
           <!-- Ligne 3 : Brand Identity -->
           <div class="portfolio-marquee-row row-branding">
-            <h4 class="portfolio-row-label">Brand Identity</h4>
+            <span class="portfolio-row-label">Brand Identity</span>
             <div class="portfolio-marquee-content">
               <!-- Projet 1 -->
               <div class="portfolio-card">
                 <div class="portfolio-image">
-                  <img src="asset/img/assets/Web-p/visual-identity-premium.png" alt="Signature Gastro" loading="lazy" />
+                  <img src="asset/img/assets/Web-p/visual-identity-premium.png" alt="Identité Visuelle de Prestige - Branding Écosystème Immobilier" loading="lazy" />
                 </div>
                 <div class="portfolio-content">
                   <h3 class="portfolio-title">Asma Immo | Écosystème de Marque.</h3>
@@ -890,7 +890,7 @@ KPI 3 : 140 sessions qualifiées</p>
             class="section-badge"
             style="background: #ffb700; color: #001f3f"
           >
-            Témoignages Clients
+            <span>Témoignages Clients</span>
           </div>
           <h2 class="section-title">Ils nous font confiance</h2>
           <p class="section-subtitle">
@@ -1203,7 +1203,9 @@ KPI 3 : 140 sessions qualifiées</p>
     <section id="contact">
       <div class="contact-container">
         <div class="contact-header">
-          <span class="contact-badge">Contact</span>
+          <div class="section-badge" style="background: #ffb700; color: #001f3f">
+            <span>Contact</span>
+          </div>
           <h2 class="contact-title">
             Parlons de votre <span>Croissance</span>.
           </h2>
