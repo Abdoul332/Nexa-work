@@ -223,7 +223,7 @@
 
     <!-- Protection contre clic droit -->
     <script>
-      document.addEventListener('contextmenu', function() {
+      document.addEventListener('contextmenu', function(e) {
         e.preventDefault(e);
         return false;
       });
