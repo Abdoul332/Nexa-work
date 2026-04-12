@@ -7,7 +7,7 @@ body {
     -ms-user-select: none;
 }
 
-/* Filigrane de prototype */
+/* Filigrane de prototype - VISIBLE pour production */
 .prototype-watermark {
     position: fixed;
     top: 0;
@@ -16,14 +16,8 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.05;
-    background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 100px,
-        rgba(0, 0, 0, 0.1) 100px,
-        rgba(0, 0, 0, 0.1) 200px
-    );
+    opacity: 0.08; /* Visible mais discret */
+    background: transparent; /* Pas de pattern visible */
 }
 
 .prototype-watermark::before {
@@ -32,9 +26,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);
-    font-size: 4rem;
+    font-size: 3rem; /* Taille visible */
     font-weight: bold;
-    color: #000;
+    color: rgba(0, 0, 0, 0.1); /* Visible mais subtil */
     white-space: nowrap;
     letter-spacing: 0.5rem;
 }
