@@ -760,4 +760,63 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // ----------- MOTEUR DE DÉFILEMENT UNIFIÉ (PORTFOLIO + TÉMOIGNAGES) -----------
+    if (hasGSAP) {
+        // Configuration globale
+        const config = {
+            baseDuration: 60, // 60s par défaut (Modèle Portfolio)
+            slowdownTime: 1.5, // Temps pour ralentir
+            resumeTime: 1,     // Temps pour reprendre
+            slowScale: 0.2     // Vitesse lors du survol (Magnet Effect)
+        };
+
+        const initMarquee = (containerSelector, direction = 1) => {
+            const container = document.querySelector(containerSelector);
+            if (!container) return;
+
+            const content = container.querySelector('.portfolio-marquee-content') || container.querySelector('.marquee-content');
+            if (!content) return;
+
+            // Création de la timeline GSAP pour une boucle infinie parfaite
+            const tl = gsap.timeline({ repeat: -1 });
+            
+            // On utilise xPercent pour que GSAP calcule par rapport à la taille réelle du contenu
+            // direction 1 : défilement vers la gauche (xPercent 0 -> -50)
+            // direction -1 : défilement vers la droite (xPercent -50 -> 0)
+            
+            if (direction > 0) {
+                tl.fromTo(content, 
+                    { xPercent: 0 }, 
+                    { xPercent: -50, duration: config.baseDuration, ease: "none" }
+                );
+            } else {
+                tl.fromTo(content, 
+                    { xPercent: -50 }, 
+                    { xPercent: 0, duration: config.baseDuration, ease: "none" }
+                );
+            }
+
+            // Gestion des interactions (Magnet Effect)
+            const parentSection = container.closest('section') || container;
+            
+            parentSection.addEventListener('mouseenter', () => {
+                gsap.to(tl, { timeScale: config.slowScale, duration: config.slowdownTime, ease: "power2.out" });
+            });
+
+            parentSection.addEventListener('mouseleave', () => {
+                gsap.to(tl, { timeScale: 1, duration: config.resumeTime, ease: "power2.inOut" });
+            });
+
+            return tl;
+        };
+
+        // 1. Initialisation Portfolio (Sens alternés)
+        initMarquee('.row-web', 1);       // Gauche
+        initMarquee('.row-seo', -1);      // Droite
+        initMarquee('.row-branding', 1);  // Gauche
+
+        // 2. Initialisation Témoignages (Sens inverse : sortie de la droite)
+        initMarquee('.marquee', 1);
+    }
 });

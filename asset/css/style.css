@@ -2402,21 +2402,14 @@ section {
   will-change: transform;
 }
 
-/* Animations désynchronisées */
-.row-web .portfolio-marquee-content {
-  animation: portfolioScrollRight 60s linear infinite;
-}
-
-.row-seo .portfolio-marquee-content {
-  animation: portfolioScrollLeft 70s linear infinite; /* Sens inverse */
-}
-
+.row-web .portfolio-marquee-content,
+.row-seo .portfolio-marquee-content,
 .row-branding .portfolio-marquee-content {
-  animation: portfolioScrollRight 60s linear infinite; /* Vitesse différente */
+  animation: none;
 }
 
 .portfolio-marquee-row:hover .portfolio-marquee-content {
-  animation-play-state: paused;
+  pointer-events: auto;
 }
 
 @keyframes portfolioScrollRight {
@@ -2825,18 +2818,18 @@ section {
   position: relative;
   padding: 2rem 0;
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
+  justify-content: center; /* Rétabli pour aligner avec le portfolio */
+  margin: 0 auto; /* Rétabli pour centrer le conteneur */
+  /* Masque de fondu identique au portfolio */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 .marquee-content {
   display: flex;
   width: fit-content;
-  animation: scroll 80s linear infinite;
-}
-
-.marquee:hover .marquee-content {
-  animation-play-state: paused;
+  gap: 40px; /* Gap aligné sur le portfolio */
+  will-change: transform;
 }
 
 @keyframes scroll {
@@ -2852,17 +2845,19 @@ section {
   flex-shrink: 0;
   width: 400px;
   max-width: 90vw;
-  background: var(--surface);
+  background: #ffffff; /* Fond blanc identique portfolio-card */
   padding: 2rem;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  margin: 0 1rem;
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-light); /* Bordure identique portfolio-card */
+  margin: 0; /* Margin supprimé, géré par le gap du parent */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* Ombre identique portfolio-card */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Transition identique portfolio-card */
+  position: relative;
 }
 
 .testimonial-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px) scale(1.02); /* Effet hover harmonisé */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
 .testimonial-text {
@@ -5074,6 +5069,7 @@ section {
   }
 
   .nexxa-metric-value {
+    color: var(--nexa-yellow);
   }
 
   .nexxa-container {
