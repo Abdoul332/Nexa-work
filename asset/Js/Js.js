@@ -172,17 +172,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ----------- NAVBAR SCROLL EFFECT (PERFORMANT) -----------
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        const updateNavbar = () => {
-            if (window.scrollY > 100) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-        };
-        window.addEventListener('scroll', () => requestAnimationFrame(updateNavbar), { passive: true });
-        updateNavbar(); // Appel initial
-    }
-
     // ----------- SECTION BADGE ANIMATION (LIQUIDE & PREMIUM) -----------
     const animateSectionBadge = (badge) => {
         if (!hasGSAP || !badge) return;
@@ -359,50 +348,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         document.querySelectorAll('img[data-src], img[data-srcset]').forEach(img => imageObserver.observe(img));
-    }
-
-    // ----------- NEXXA STATS COUNTERS -----------
-    const nexxaStats = document.querySelector('.nexxa-stats');
-    if (nexxaStats && 'IntersectionObserver' in window) {
-        const statNumbers = Array.from(nexxaStats.querySelectorAll('.nexxa-stat-number'));
-        const parts = statNumbers.map(item => {
-            const text = item.textContent.trim();
-            const match = text.match(/^(.*?)(\d+)(.*)$/);
-            if (!match) return null;
-            return {
-                el: item,
-                prefix: match[1],
-                target: parseInt(match[2], 10),
-                suffix: match[3]
-            };
-        }).filter(Boolean);
-
-        // Animation function for stats
-        function animateNexxaStats() {
-            parts.forEach(part => {
-                let current = 0;
-                const increment = part.target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= part.target) {
-                        current = part.target;
-                        clearInterval(timer);
-                    }
-                    part.el.textContent = part.prefix + Math.floor(current) + part.suffix;
-                }, 30);
-            });
-        }
-
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateNexxaStats();
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        statsObserver.observe(nexxaStats);
     }
 
     // ----------- HERO MINI GRAPH ANIMATION -----------
@@ -630,74 +575,84 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ----------- MENU MOBILE NEXA -----------
-    const nexaBurger = document.getElementById('nexa-burger');
-    const nexaOverlay = document.getElementById('nexa-mobile-overlay');
-    const nexaLinks = nexaOverlay ? nexaOverlay.querySelectorAll('a') : [];
-    
-    if (nexaBurger && nexaOverlay) {
-        // Ouvrir/fermer le menu
-        nexaBurger.addEventListener('click', function() {
-            const isOpening = nexaOverlay.hasAttribute('inert');
+    // ----------- HEADER SCROLL REVEAL ANIMATION GSAP -----------
+    const header = document.querySelector('.nexa-header');
+    let lastScroll = 0;
+
+    if (header) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            if (isOpening) {
-                // 1. Retirer inert pour permettre l'interaction
-                nexaOverlay.removeAttribute('inert');
-                nexaOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                nexaBurger.classList.add('active');
-                nexaBurger.setAttribute('aria-expanded', 'true');
-                
-                // 2. Donner le focus au premier lien après un court délai
-                setTimeout(() => {
-                    const firstLink = nexaOverlay.querySelector('a');
-                    if (firstLink) {
-                        firstLink.focus();
-                    }
-                }, 100);
+            // Déterminer la direction du scroll
+            if (currentScroll > lastScroll) {
+                // Scroll vers le bas - masquer le header
+                if (currentScroll > 100) {
+                    gsap.to(header, {
+                        yPercent: -100,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                }
             } else {
-                // Fermeture du menu
-                nexaOverlay.setAttribute('inert', '');
-                nexaOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                nexaBurger.classList.remove('active');
-                nexaBurger.setAttribute('aria-expanded', 'false');
-                nexaBurger.focus();
+                // Scroll vers le haut - révéler le header
+                gsap.to(header, {
+                    yPercent: 0,
+                    duration: 0.3,
+                    ease: 'power2.in'
+                });
             }
+            
+            lastScroll = currentScroll;
         });
-        
-        // Fermer au clic sur les liens
-        nexaLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                nexaOverlay.setAttribute('inert', '');
-                nexaOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                nexaBurger.classList.remove('active');
-                nexaBurger.setAttribute('aria-expanded', 'false');
+    }
+
+    // ----------- BURGER GLOBAL - NOUVEAU SYSTÈME PROPRE -----------
+    const burgerBtn = document.getElementById('nexa-burger-global');
+    const fullMenu = document.getElementById('nexa-full-menu');
+    const menuLinks = fullMenu ? fullMenu.querySelectorAll('.full-menu-link') : [];
+
+    if (burgerBtn && fullMenu) {
+        // Toggle menu au clic sur burger
+        burgerBtn.addEventListener('click', function() {
+            burgerBtn.classList.toggle('active');
+            fullMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Fermer menu au clic sur lien
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                // Fermer le menu
+                burgerBtn.classList.remove('active');
+                fullMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+
+                // Smooth scroll pour liens d'ancrage
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }, 300);
+                    }
+                }
             });
         });
-        
-        // Fermer au clic sur l'overlay (hors navigation)
-        nexaOverlay.addEventListener('click', function(e) {
-            if (e.target === nexaOverlay) {
-                nexaOverlay.setAttribute('inert', '');
-                nexaOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                nexaBurger.classList.remove('active');
-                nexaBurger.setAttribute('aria-expanded', 'false');
-                nexaBurger.focus();
-            }
-        });
-        
-        // Fermer avec la touche Escape
+
+        // Fermer avec Escape
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nexaOverlay.classList.contains('active')) {
-                nexaOverlay.setAttribute('inert', '');
-                nexaOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                nexaBurger.classList.remove('active');
-                nexaBurger.setAttribute('aria-expanded', 'false');
-                nexaBurger.focus();
+            if (e.key === 'Escape' && fullMenu.classList.contains('active')) {
+                burgerBtn.classList.remove('active');
+                fullMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
             }
         });
     }
@@ -763,60 +718,163 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ----------- MOTEUR DE DÉFILEMENT UNIFIÉ (PORTFOLIO + TÉMOIGNAGES) -----------
     if (hasGSAP) {
-        // Configuration globale
+        // Configuration globale optimisée
         const config = {
             baseDuration: 60, // 60s par défaut (Modèle Portfolio)
             slowdownTime: 1.5, // Temps pour ralentir
             resumeTime: 1,     // Temps pour reprendre
-            slowScale: 0.2     // Vitesse lors du survol (Magnet Effect)
+            slowScale: 0.1     // Vitesse lors du survol (Optimisé pour confort lecture)
         };
 
-        const initMarquee = (containerSelector, direction = 1) => {
+        // Stocker les timelines pour les recréer au resize
+        const timelines = new Map();
+
+        const initMarquee = (containerSelector, direction = 1, useScrollTrigger = true) => {
             const container = document.querySelector(containerSelector);
             if (!container) return;
 
             const content = container.querySelector('.portfolio-marquee-content') || container.querySelector('.marquee-content');
             if (!content) return;
 
-            // Création de la timeline GSAP pour une boucle infinie parfaite
-            const tl = gsap.timeline({ repeat: -1 });
-            
-            // On utilise xPercent pour que GSAP calcule par rapport à la taille réelle du contenu
-            // direction 1 : défilement vers la gauche (xPercent 0 -> -50)
-            // direction -1 : défilement vers la droite (xPercent -50 -> 0)
-            
+            // Calculer la largeur réelle du premier groupe d'items (avant les duplicates)
+            const items = Array.from(content.children);
+            const duplicatesStartIndex = items.findIndex(item => item.hasAttribute('aria-hidden'));
+            const originalItems = duplicatesStartIndex !== -1 ? items.slice(0, duplicatesStartIndex) : items.slice(0, Math.floor(items.length / 2));
+
+            // Calculer la largeur totale du groupe original
+            let totalWidth = 0;
+            originalItems.forEach(item => {
+                totalWidth += item.offsetWidth;
+            });
+
+            // Ajouter les gaps
+            const gap = 40; // Valeur CSS gap
+            totalWidth += gap * (originalItems.length - 1);
+
+            // Clone dynamique pour remplir l'espace horizontal (4K proof)
+            const viewportWidth = window.innerWidth;
+            const minClonesNeeded = Math.ceil(viewportWidth / totalWidth) + 2; // +2 pour marge de sécurité
+
+            // Supprimer les anciens clones
+            const currentClones = items.filter(item => item.hasAttribute('aria-hidden'));
+            currentClones.forEach(clone => clone.remove());
+
+            // Ajouter les nouveaux clones nécessaires
+            for (let i = 0; i < minClonesNeeded; i++) {
+                originalItems.forEach(item => {
+                    const clone = item.cloneNode(true);
+                    clone.setAttribute('aria-hidden', 'true');
+                    content.appendChild(clone);
+                });
+            }
+
+            // Recalculer la largeur totale avec tous les clones
+            const allItems = Array.from(content.children);
+            let newTotalWidth = 0;
+            allItems.forEach(item => {
+                newTotalWidth += item.offsetWidth;
+            });
+            newTotalWidth += gap * (allItems.length - 1);
+
+            // Création de la timeline GSAP pour une boucle infinie parfaite avec GPU acceleration
+            const tl = gsap.timeline({
+                repeat: -1,
+                invalidateOnRefresh: true,
+                force3D: true
+            });
+
+            // Utiliser la largeur calculée dynamiquement
             if (direction > 0) {
-                tl.fromTo(content, 
-                    { xPercent: 0 }, 
-                    { xPercent: -50, duration: config.baseDuration, ease: "none" }
+                tl.fromTo(content,
+                    { x: 0 },
+                    { x: -totalWidth, duration: config.baseDuration, ease: "none", force3D: true }
                 );
             } else {
-                tl.fromTo(content, 
-                    { xPercent: -50 }, 
-                    { xPercent: 0, duration: config.baseDuration, ease: "none" }
+                tl.fromTo(content,
+                    { x: -totalWidth },
+                    { x: 0, duration: config.baseDuration, ease: "none", force3D: true }
                 );
             }
 
-            // Gestion des interactions (Magnet Effect)
-            const parentSection = container.closest('section') || container;
-            
-            parentSection.addEventListener('mouseenter', () => {
+            // Gestion des interactions (Magnet Effect) - ISOLÉE sur le conteneur marquee
+            // timeScale progressif : ralentissement doux jusqu'à 0.1 au hover
+            container.addEventListener('mouseenter', () => {
                 gsap.to(tl, { timeScale: config.slowScale, duration: config.slowdownTime, ease: "power2.out" });
             });
 
-            parentSection.addEventListener('mouseleave', () => {
+            container.addEventListener('mouseleave', () => {
                 gsap.to(tl, { timeScale: 1, duration: config.resumeTime, ease: "power2.inOut" });
             });
+
+            // ScrollTrigger pour mettre en pause l'animation quand hors champ (uniquement pour Portfolio)
+            if (useScrollTrigger) {
+                ScrollTrigger.create({
+                    trigger: container,
+                    start: "top bottom",
+                    end: "bottom top",
+                    onEnter: () => tl.play(),
+                    onLeave: () => tl.pause(),
+                    onEnterBack: () => tl.play(),
+                    onLeaveBack: () => tl.pause()
+                });
+            }
+
+            // Stocker la timeline pour recréation au resize
+            timelines.set(containerSelector, { tl, container, content, direction, useScrollTrigger });
 
             return tl;
         };
 
-        // 1. Initialisation Portfolio (Sens alternés)
-        initMarquee('.row-web', 1);       // Gauche
-        initMarquee('.row-seo', -1);      // Droite
-        initMarquee('.row-branding', 1);  // Gauche
+        // Initialisation au chargement complet de la page (images, CSS, etc.)
+        window.addEventListener('load', () => {
+            // 1. Initialisation Portfolio (Sens alternés) avec ScrollTrigger
+            initMarquee('.row-web', 1, true);       // Gauche
+            initMarquee('.row-seo', -1, true);      // Droite
+            initMarquee('.row-branding', 1, true);  // Gauche
 
-        // 2. Initialisation Témoignages (Sens inverse : sortie de la droite)
-        initMarquee('.marquee', 1);
+            // 2. Témoignages : Désactivé - Conversion en CSS natif pour performance
+            // initMarquee('.marquee', 1, false); // Plus utilisé, remplacé par CSS
+        });
+
+        // Recalculer les dimensions et recréer les timelines au resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                // Arrêter toutes les timelines existantes
+                timelines.forEach(({ tl }) => {
+                    tl.kill();
+                });
+                timelines.clear();
+
+                // Recréer uniquement les marquee Portfolio (Témoignages en CSS natif)
+                initMarquee('.row-web', 1, true);
+                initMarquee('.row-seo', -1, true);
+                initMarquee('.row-branding', 1, true);
+
+                ScrollTrigger.refresh();
+            }, 250);
+        });
     }
+});
+
+// --- FAQ ACCORDION INTERACTION ---
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+            // Fermer tous les autres items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Toggle l'item actuel
+            item.classList.toggle('active');
+        });
+    });
 });
