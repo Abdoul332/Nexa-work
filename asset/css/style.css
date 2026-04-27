@@ -110,15 +110,13 @@ section {
   position: fixed;
   bottom: 30px;
   left: 30px;
-  background: rgba(0, 31, 63, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   z-index: 10000;
   transform: translateY(100%);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 8px 32px rgba(0, 31, 63, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   max-width: 400px;
 }
 
@@ -140,7 +138,7 @@ section {
 }
 
 .cookie-text h4 {
-  color: #ffffff;
+  color: #1f2937;
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 4px 0;
@@ -148,7 +146,7 @@ section {
 }
 
 .cookie-text p {
-  color: rgba(255, 255, 255, 0.8);
+  color: #6b7280;
   margin: 0;
   line-height: 1.4;
 }
@@ -246,7 +244,7 @@ section {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 31, 63, 0.7);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -285,7 +283,7 @@ section {
   justify-content: space-between;
   padding: 1.25rem;
   border-bottom: 1px solid var(--border);
-  background: var(--bg-glacier);
+  background: #ffffff;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
@@ -2087,8 +2085,8 @@ section {
 }
 
 .faq-item {
-  background: #0a0a0a;
-  border: 1px solid rgba(255, 193, 7, 0.2);
+  background: rgba(0, 31, 63, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   margin-bottom: 1rem;
   overflow: hidden;
@@ -2258,12 +2256,12 @@ section {
   transform: translateX(5px);
 }
 
-.footer-whatsapp {
-  color: #25D366 !important;
+.footer-calendly {
+  color: #006BFF !important;
 }
 
-.footer-whatsapp:hover {
-  color: #128C7E !important;
+.footer-calendly:hover {
+  color: #0052CC !important;
 }
 
 .footer-bottom {
@@ -4496,10 +4494,10 @@ section {
 }
 
 .bento-icon {
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: var(--nexa-yellow);
-  margin-bottom: 1.5rem;
-  text-shadow: 0 0 20px rgba(255, 183, 0, 0.5);
+  margin-bottom: 1rem;
+  text-shadow: none;
 }
 
 .bento-title {
@@ -4539,10 +4537,10 @@ section {
 
 .bento-meta-item i {
   color: var(--nexa-yellow);
-  font-size: 1.1rem;
-  width: 22px;
+  font-size: 0.9rem;
+  width: 18px;
   text-align: center;
-  text-shadow: 0 0 10px rgba(255, 183, 0, 0.5);
+  opacity: 0.7;
 }
 
 .bento-features {
@@ -4952,7 +4950,7 @@ section {
   font-size: clamp(2.2rem, 6.5vw, 4.2rem) !important;
   font-weight: 800;
   line-height: 1.05;
-  margin: 0 0 1.5rem;
+  margin: 4rem 0 1.5rem;
   letter-spacing: -0.02em;
   max-width: none;
   text-align: center;
@@ -5864,7 +5862,7 @@ body {
   top: 0;
   right: 0;
   width: 400px;
-  height: 100vh;
+  height: 80vh;
   z-index: 9999;
   background-color: rgba(223, 227, 235, 0.98);
   backdrop-filter: blur(15px);
@@ -5990,6 +5988,7 @@ body.menu-open {
 @media (max-width: 768px) {
   .full-menu-overlay {
     width: 85%;
+    height: 100vh;
     padding: 80px 20px 20px;
   }
 }

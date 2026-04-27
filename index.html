@@ -454,7 +454,7 @@
 
       // Configuration EmailJS avec votre clé publique
 
-      window.addEventListener("DOMContentLoaded", function () {
+      window.addEventListener("DOMContentLoaded", function (e) {
 
         if (typeof emailjs !== "undefined") {
 
@@ -490,7 +490,7 @@
                    class="full-menu-link full-menu-cta"
                    target="_blank"
                    rel="noopener noreferrer">
-                  Prendre RDV
+                  <i class="fas fa-calendar-alt"></i> Prendre RDV
                 </a>
               </li>
             </ul>
@@ -525,7 +525,7 @@
 
       document.addEventListener('contextmenu', function() {
 
-        e.preventDefault(e);
+        e.preventDefault();
 
         return false;
 
@@ -776,7 +776,7 @@
                 class="nexxa-btn nexxa-btn-primary nexxa-btn-compact"
                 aria-label="Obtenir un devis offert pour votre site web"
               >
-                <span>Obtenir un devis offert</span>
+                <span>Obtenir un devis</span>
                 <svg
                   width="20"
                   height="20"
@@ -1242,7 +1242,7 @@
 
           <a href="?service=devis#contact" class="btn-primary">
 
-            Demander un devis offert
+            Demander un devis
 
           </a>
 
@@ -1963,15 +1963,15 @@
 
             <div class="info-item">
 
-              <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+              <div class="info-icon"><i class="fas fa-calendar-alt"></i></div>
 
               <div class="info-content">
 
-                <h4>WhatsApp</h4>
+                <h4>Calendly</h4>
 
-                <a href="https://calendly.com/abdoulibrahim332/30min" target="blank" class="info-link info-link-whatsapp">
+                <a href="https://calendly.com/abdoulibrahim332/30min" target="blank" class="info-link info-link-calendly">
 
-                  Prendre RDV
+                  <i class="fas fa-calendar-alt"></i> Prendre RDV
 
                 </a>
 
@@ -2200,9 +2200,9 @@
                 <span>nexawork@zohomail.com</span>
               </a>
 
-              <a href="https://calendly.com/abdoulibrahim332/30min" target="_blank" class="footer-contact-link footer-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <span>Discuter sur WhatsApp</span>
+              <a href="https://calendly.com/abdoulibrahim332/30min" target="_blank" class="footer-contact-link footer-calendly">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Prendre RDV</span>
               </a>
 
             </div>
