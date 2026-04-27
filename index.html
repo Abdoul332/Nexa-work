@@ -416,7 +416,33 @@
 
     />
 
-
+    <!-- Critical CSS inline for above-fold content -->
+    <style>
+      body { margin: 0; padding: 80px 0 0 0; font-family: 'Inter', sans-serif; }
+      .nexa-header {
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 10000;
+        background-color: rgba(223, 227, 235, 0.95);
+        backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .nexxa-logo img { height: 40px; }
+      .nexxa-hero {
+        position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+        padding: 4rem 0; background: linear-gradient(135deg, #001a33 0%, #002855 100%);
+        color: #fff; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .nexxa-container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 2; }
+      .nexxa-hero-content { text-align: center; }
+      .nexxa-hero-title { font-size: clamp(2.2rem, 6.5vw, 4.2rem); font-weight: 800; line-height: 1.05; margin: 4rem 0 1.5rem; }
+      .nexxa-hero-subtitle { font-size: 1.25rem; line-height: 1.6; margin-bottom: 2rem; opacity: 0.9; }
+      .nexxa-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+      .nexxa-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+      .nexxa-btn-primary { background: #ffb700; color: #001f3f; }
+      .nexxa-btn-secondary { background: transparent; border: 2px solid #ffb700; color: #ffb700; }
+      .nexxa-gradient-text { background: linear-gradient(135deg, #ffb700 0%, #ffcc33 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
 
     <link rel="stylesheet" href="./asset/css/style.css" />
 
@@ -432,39 +458,11 @@
 
     ></script>
 
-    <script
-
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-
-      defer
-
-    ></script>
-
-    <script
-
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-
-      defer
-
-    ></script>
+    <!-- GSAP removed - not used -->
 
     <script src="./asset/Js/Js.js" defer></script>
 
-    <script>
-
-      // Configuration EmailJS avec votre clé publique
-
-      window.addEventListener("DOMContentLoaded", function (e) {
-
-        if (typeof emailjs !== "undefined") {
-
-          emailjs.init("LAXCbuG7pf_tAUYCp"); // Votre clé publique
-
-        }
-
-      });
-
-    </script>
+    <!-- EmailJS config moved to body for performance -->
 
     
 
@@ -519,39 +517,7 @@
 
 
 
-    <!-- Protection contre clic droit -->
-
-    <script>
-
-      document.addEventListener('contextmenu', function(e) {
-
-        e.preventDefault();
-
-        return false;
-
-      });
-
-
-
-      document.addEventListener('selectstart', function(e) {
-
-        e.preventDefault();
-
-        return false;
-
-      });
-
-
-
-      document.addEventListener('dragstart', function(e) {
-
-        e.preventDefault();
-
-        return false;
-
-      });
-
-    </script>
+    <!-- Protection contre clic droit moved to body for performance -->
 
 
 
@@ -752,7 +718,7 @@
 
     <!-- Hero Section -->
 
-    <section id="hero" class="nexxa-hero" data-aos="fade-up">
+    <section id="hero" class="nexxa-hero">
 
       <div class="nexxa-container">
 
@@ -760,17 +726,17 @@
 
           <!-- Hero Main: H1 + Subtitle + CTAs -->
           <main class="nexxa-hero-main">
-            <h1 class="nexxa-hero-title" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="nexxa-hero-title">
               Votre site web qui <span class="nexxa-gradient-text">génère des clients</span> —
               <span class="nexxa-gradient-text">livré en 7 jours</span>
             </h1>
 
-            <p class="nexxa-hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+            <p class="nexxa-hero-subtitle">
               Nous créons des sites internet professionnels orientés conversion pour les PME, coachs et consultants en France et en Europe.
             </p>
 
             <!-- Hero CTAs -->
-            <div class="nexxa-cta-group" data-aos="fade-up" data-aos-delay="400">
+            <div class="nexxa-cta-group">
               <a
                 href="?service=devis#contact"
                 class="nexxa-btn nexxa-btn-primary nexxa-btn-compact"
@@ -811,7 +777,7 @@
           </main>
 
           <!-- Hero Footer: Labels Carousel -->
-          <footer class="nexxa-hero-footer" data-aos="fade-up" data-aos-delay="500">
+          <footer class="nexxa-hero-footer">
             <!-- European Expertise Marquee (Simplified) -->
             <div class="nexxa-expertise-marquee">
               <div class="nexxa-expertise-track">
@@ -1242,7 +1208,7 @@
 
           <a href="?service=devis#contact" class="btn-primary">
 
-            Demander un devis
+            Obtenir un devis
 
           </a>
 
@@ -1322,9 +1288,9 @@
 
         <div class="audit-cta-wrapper" data-aos="fade-up" data-aos-delay="400">
 
-          <a href="?service=audit#contact" class="btn-primary audit-cta-btn">Faire auditer mon site web offert</a>
+          <a href="?service=audit#contact" class="btn-primary audit-cta-btn">Audit offert</a>
 
-          <p class="audit-cta-reassurance">Réponse sous 24h — Analyse de performance complète.</p>
+          <p class="audit-cta-reassurance">Réponse sous 24h — Analyse complète.</p>
 
         </div>
 
@@ -2329,6 +2295,32 @@
     </script>
 
   </body>
+
+  <!-- Performance: Scripts moved to end of body -->
+  <script>
+    // Configuration EmailJS avec votre clé publique
+    window.addEventListener("DOMContentLoaded", function (e) {
+      if (typeof emailjs !== "undefined") {
+        emailjs.init("LAXCbuG7pf_tAUYCp");
+      }
+    });
+  </script>
+
+  <script>
+    // Protection contre clic droit
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    document.addEventListener('selectstart', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    document.addEventListener('dragstart', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  </script>
 
 </html>
 

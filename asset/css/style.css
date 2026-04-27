@@ -3726,51 +3726,7 @@ section {
   font-style: italic;
 }
 
-/* Cookie banner styles */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--surface-elevated);
-  border-top: 1px solid var(--border);
-  box-shadow: var(--shadow-xl);
-  z-index: 1000;
-  transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  visibility: hidden;
-}
-
-.cookie-banner.show {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.cookie-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  gap: 2rem;
-}
-
-.cookie-content p {
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin: 0;
-  flex: 1;
-}
-
-.cookie-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-shrink: 0;
-}
+/* Cookie banner styles - REMOVED DUPLICATE (using simple style from lines 109-121) */
 
 .btn-accept,
 .btn-decline {
