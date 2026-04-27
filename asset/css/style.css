@@ -2020,9 +2020,9 @@ section {
 }
 
 /* Secteur - Style image_22.png */
-.portfolio-sector {
+.portfolio-section .portfolio-sector {
   font-size: 1.1rem;
-  color: #22c55e;
+  color: #FFFFFF !important;
   font-weight: 600;
   margin: 0 0 0.75rem;
   text-transform: uppercase;
@@ -2030,10 +2030,10 @@ section {
 }
 
 /* KPI - Style image_22.png */
-.portfolio-kpi {
+.portfolio-section .portfolio-kpi {
   font-size: 1rem;
   font-weight: 700;
-  color: #22c55e;
+  color: #FFFFFF !important;
   margin: 0 0 1.5rem;
   line-height: 1.4;
 }
