@@ -20,6 +20,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/style.css">
+    <style>
+      .nexa-header {
+        position: fixed; top: 0; left: 0; width: 100%; z-index: 10000;
+        background-color: rgba(223, 227, 235, 0.95);
+        backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .nexa-logo img { height: 40px; }
+      .main { padding-top: 100px !important; }
+    </style>
 </head>
 <body>
     <!-- Overlay Full Menu -->
@@ -45,7 +57,7 @@
       </nav>
     </div>
 
-    <!-- Header Fixe - Gris Perle Glass Design -->
+    <!-- Header Fixe -->
     <header class="nexa-header">
       <a href="index.html" class="nexa-logo">
         <img src="./asset/img/assets/Nexa-Logo-v4.png" alt="Nexa Work" />
@@ -214,7 +226,7 @@
 
           <!-- Colonne 2: Services -->
           <div class="footer-col">
-            <h4 class="footer-col-title">Services</h4>
+            <h4 class="footer-heading">Services</h4>
             <ul class="footer-links-list">
               <li><a href="index.html#services" class="footer-link">Création site web one page</a></li>
               <li><a href="index.html#services" class="footer-link">Site web 5 pages</a></li>
@@ -225,9 +237,9 @@
             </ul>
           </div>
 
-          <!-- Colonne 3: Zones SEO -->
+          <!-- Colonne 3: Expertise -->
           <div class="footer-col">
-            <h4 class="footer-col-title">Expertise</h4>
+            <h4 class="footer-heading">Expertise</h4>
             <ul class="footer-links-list">
               <li><a href="index.html#process" class="footer-link">Audit SEO Offert</a></li>
               <li><a href="index.html#portfolio" class="footer-link">Nos Réalisations</a></li>
@@ -239,7 +251,7 @@
 
         <div class="footer-bottom">
           <p>
-            &copy; 2026 Nexa Work. Tous droits réservés. France & Europe. Conçu avec expertise et passion.
+            &copy; 2026 Nexa Work. Tous droits réservés. France & Europe.
           </p>
           <a href="Mentions_legales.html" class="footer-legal">Mentions légales</a>
         </div>
