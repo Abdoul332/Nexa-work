@@ -20,10 +20,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/style.css">
-    <script src="./asset/Js/Js.js" defer></script>
 </head>
 <body>
-   1/
+    <!-- Overlay Full Menu -->
+    <div id="nexa-full-menu" class="full-menu-overlay">
+      <nav class="full-menu-nav">
+        <ul class="full-menu-list">
+          <li><a href="index.html#services" class="full-menu-link">Nos Expertises</a></li>
+          <li><a href="index.html#process" class="full-menu-link">Diagnostic Offert</a></li>
+          <li><a href="index.html#about" class="full-menu-link">Notre Équipe</a></li>
+          <li><a href="index.html#portfolio" class="full-menu-link">Nos Projets</a></li>
+          <li><a href="index.html#testimonials" class="full-menu-link">Avis Clients</a></li>
+          <li><a href="index.html#faq" class="full-menu-link">FAQ</a></li>
+          <li><a href="index.html#contact" class="full-menu-link">Contact</a></li>
+          <li>
+            <a href="https://calendly.com/abdoulibrahim332/30min"
+               class="full-menu-link full-menu-cta"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i class="fas fa-calendar-alt"></i> Prendre RDV
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Header Fixe - Gris Perle Glass Design -->
+    <header class="nexa-header">
+      <a href="index.html" class="nexa-logo">
+        <img src="./asset/img/assets/Nexa-Logo-v4.png" alt="Nexa Work" />
+      </a>
+      
+      <div class="nexa-social-icons">
+        <a href="https://www.linkedin.com/in/abdoul332/" class="nexa-social-icon nexa-social-linkedin" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/NexaWorkCEO" class="nexa-social-icon nexa-social-twitter" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/ceo_nexawork/" class="nexa-social-icon nexa-social-instagram" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      
+      <button id="nexa-burger-global" class="burger-btn" aria-label="Menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </header>
 
     <!-- Contenu principal -->
     <main class="main">
@@ -152,28 +197,148 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <h3 class="footer-title">Nexa Work</h3>
-                <p class="footer-subtitle">Agence web spécialisée branding-identity et sites web performants.</p>
-                
-                
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nexa Work. Tous droits réservés. Conçu avec expertise et passion.</p>
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Colonne 1: Brand -->
+          <div class="footer-col">
+            <h3 class="footer-title">Nexa Work</h3>
+            <p class="footer-tagline">
+              L'agence qui transforme votre site web en moteur de croissance.
+            </p>
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/in/abdoul332/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://x.com/NexaWorkCEO" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-x-twitter"></i></a>
+              <a href="https://www.instagram.com/ceo_nexawork/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
             </div>
+          </div>
+
+          <!-- Colonne 2: Services -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Services</h4>
+            <ul class="footer-links-list">
+              <li><a href="index.html#services" class="footer-link">Création site web one page</a></li>
+              <li><a href="index.html#services" class="footer-link">Site web 5 pages</a></li>
+              <li><a href="index.html#services" class="footer-link">Identité visuelle</a></li>
+              <li><a href="index.html#services" class="footer-link">Branding PME</a></li>
+              <li><a href="index.html#services" class="footer-link">Refonte site web</a></li>
+              <li><a href="index.html#services" class="footer-link">Site web coach</a></li>
+            </ul>
+          </div>
+
+          <!-- Colonne 3: Zones SEO -->
+          <div class="footer-col">
+            <h4 class="footer-col-title">Expertise</h4>
+            <ul class="footer-links-list">
+              <li><a href="index.html#process" class="footer-link">Audit SEO Offert</a></li>
+              <li><a href="index.html#portfolio" class="footer-link">Nos Réalisations</a></li>
+              <li><a href="index.html#faq" class="footer-link">Questions Fréquentes</a></li>
+              <li><a href="index.html#contact" class="footer-link">Nous Contacter</a></li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Nexa Work. Tous droits réservés. France & Europe. Conçu avec expertise et passion.
+          </p>
+          <a href="Mentions_legales.html" class="footer-legal">Mentions légales</a>
+        </div>
+      </div>
     </footer>
 
-    <!-- Bannière cookies -->
-    <div class="cookie-banner" id="cookie-banner">
-        <div class="cookie-content">
-            <p>Ce site utilise des cookies pour améliorer votre expérience de navigation et analyser l'utilisation du site. En continuant à naviguer, vous acceptez notre utilisation des cookies.</p>
-            <div class="cookie-buttons">
-                <button class="btn-accept" id="accept-cookies">Accepter</button>
-                <button class="btn-decline" id="decline-cookies">Refuser</button>
-            </div>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+    <!-- Nexa Global JS -->
+    <script src="./asset/Js/Js.js" defer></script>
+
+    <!-- Nouveau Système de Cookies Nexa - Consent Mode v2 (GA4) -->
+    <style>
+      #nexa-cookie-banner {
+        display: none;
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 500px;
+        background: #ffffff;
+        border-radius: 12px;
+        z-index: 20000;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        padding: 20px;
+        border: 1px solid #eee;
+        font-family: 'Inter', sans-serif;
+      }
+      @media (max-width: 768px) {
+        #nexa-cookie-banner {
+          bottom: 12px;
+          width: 94%;
+          padding: 16px;
+        }
+        #nexa-cookie-banner .cookie-btn-group {
+          flex-direction: column;
+        }
+        #nexa-cookie-banner p {
+          font-size: 0.8rem !important;
+          margin-bottom: 15px !important;
+        }
+      }
+    </style>
+    <div id="nexa-cookie-banner">
+      <div style="text-align:center;">
+        <h4 style="margin:0 0 10px; color:#002855; font-size:1rem; font-weight:700;">Respect de votre vie privée</h4>
+        <p style="margin:0 0 20px; color:#444; font-size:0.875rem; line-height:1.5;">Nous utilisons des cookies pour analyser notre trafic et optimiser votre expérience.</p>
+        <div class="cookie-btn-group" style="display:flex; gap:12px; justify-content:center;">
+          <button id="cookie-accept-all" style="background:#ffb700; color:#001a33; border:none; padding:10px 24px; border-radius:50px; font-weight:700; cursor:pointer; font-size:0.875rem; transition:0.3s; flex:1;">Accepter tout</button>
+          <button id="cookie-refuse" style="background:transparent; color:#666; border:1px solid #ddd; padding:10px 24px; border-radius:50px; font-weight:500; cursor:pointer; font-size:0.875rem; transition:0.3s; flex:1;">Refuser</button>
         </div>
+      </div>
     </div>
 
+    <script>
+      (function() {
+        const COOKIE_NAME = 'nexa_consent';
+        const banner = document.getElementById('nexa-cookie-banner');
+        const btnAccept = document.getElementById('cookie-accept-all');
+        const btnRefuse = document.getElementById('cookie-refuse');
+
+        window.gtag = window.gtag || function() { (window.dataLayer = window.dataLayer || []).push(arguments); };
+        
+        function updateConsent(granted) {
+          const consentStatus = granted ? 'granted' : 'denied';
+          gtag('consent', 'update', {
+            'analytics_storage': consentStatus,
+            'ad_storage': consentStatus,
+            'ad_user_data': consentStatus,
+            'ad_personalization': consentStatus
+          });
+          localStorage.setItem(COOKIE_NAME, granted ? 'granted' : 'denied');
+          banner.style.display = 'none';
+        }
+
+        if (!localStorage.getItem(COOKIE_NAME)) {
+          banner.style.display = 'block';
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+          });
+        } else {
+          const savedConsent = localStorage.getItem(COOKIE_NAME);
+          gtag('consent', 'default', {
+            'analytics_storage': savedConsent,
+            'ad_storage': savedConsent,
+            'ad_user_data': savedConsent,
+            'ad_personalization': savedConsent
+          });
+        }
+
+        btnAccept.onclick = () => updateConsent(true);
+        btnRefuse.onclick = () => updateConsent(false);
+      })();
+    </script>
 </body>
 </html>
